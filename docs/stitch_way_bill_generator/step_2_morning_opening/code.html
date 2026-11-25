@@ -1,0 +1,861 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morning Opening — Var 2: Accordion</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00236F',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A8A',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#AC3400',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#FFDBD0',
+        'light-on-secondary-container': '#5D1800',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#FAF7F2',
+        'light-on-background': '#1A1B21',
+        'light-surface': '#FAF7F2',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3EFE6',
+        'light-surface-container': '#EBE6DC',
+        'light-surface-container-high': '#E3DDD2',
+        'light-on-surface': '#1A1B21',
+        'light-on-surface-variant': '#444651',
+        'light-outline': '#757682',
+        'light-outline-variant': '#D5CFC4',
+        'dark-primary': '#B6C4FF',
+        'dark-on-primary': '#05297A',
+        'dark-primary-container': '#1E3A8A',
+        'dark-on-primary-container': '#DCE1FF',
+        'dark-secondary': '#FFB59D',
+        'dark-on-secondary': '#5D1800',
+        'dark-secondary-container': '#B43700',
+        'dark-on-secondary-container': '#FFDBD0',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121318',
+        'dark-on-background': '#E3E1E9',
+        'dark-surface': '#121318',
+        'dark-surface-container-lowest': '#0D0E13',
+        'dark-surface-container-low': '#1A1B21',
+        'dark-surface-container': '#1E1F25',
+        'dark-surface-container-high': '#292A2F',
+        'dark-on-surface': '#E3E1E9',
+        'dark-on-surface-variant': '#C5C5D3',
+        'dark-outline': '#8F909D',
+        'dark-outline-variant': '#444651',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'body': ['"Open Sans"', 'sans-serif'],
+        'label': ['"Open Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'mono-lg': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Open+Sans:wght@400;600&amp;family=Source+Code+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[884px] w-full max-w-md mx-auto flex flex-col justify-between bg-light-surface" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-20 bg-light-surface border-b border-light-outline-variant px-page-margin pt-gutter-lg pb-gutter-md flex flex-col gap-gutter-md">
+      <div class="flex items-center justify-between gap-gutter-sm">
+        <div class="flex flex-col gap-gutter-xs">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-primary tracking-wider uppercase">JOY MAA TRAVELS</span>
+          <h1 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Daily Way Bill</h1>
+        </div>
+        <div class="flex items-center gap-gutter-xs">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm px-gutter-sm py-gutter-xs rounded-full bg-light-surface-container text-light-primary tabular-nums">Step 2 of 5</span>
+          <span class="inline-flex items-center gap-gutter-xs px-gutter-sm py-gutter-xs rounded-full bg-light-secondary-container text-light-on-secondary-container">
+            <span class="material-symbols-outlined text-[16px]" aria-hidden="true">confirmation_number</span>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm">Opening</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 5-Step Progress Bar -->
+      <nav class="grid grid-cols-5 gap-gutter-xs" aria-label="Step 2 of 5 progress">
+        <a href="../step-1-trip-details/TripDetails.html" aria-label="Step 1: Bus &amp; Trip Details" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-primary"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none font-semibold text-light-primary/80 tabular-nums">1</span></a>
+        <a href="../morning-opening-v2-accordion/MorningOpeningAccordion.html" aria-label="Step 2: Opening" aria-current="step" class="block py-1 -my-1 cursor-pointer"><div class="h-1.5 rounded-full bg-light-primary"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none font-bold text-light-primary tabular-nums">2</span></a>
+        <a href="../evening-closing/EveningClosing.html" aria-label="Step 3: Closing" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-surface-container-high"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none text-light-on-surface-variant/60 tabular-nums">3</span></a>
+        <a href="../step-4-expenses/DailyExpenses.html" aria-label="Step 4: Daily Expenses" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-surface-container-high"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none text-light-on-surface-variant/60 tabular-nums">4</span></a>
+        <a href="../step-5-final-waybill/FinalWayBill.html" aria-label="Step 5: Final Way Bill" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-surface-container-high"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none text-light-on-surface-variant/60 tabular-nums">5</span></a>
+      </nav>
+
+      <!-- Date Picker Row -->
+      <div role="button" tabindex="0" data-component-id="card-interactive-2" data-component-type="card" data-component-variant="interactive" class="w-full rounded-md bg-light-surface-container-lowest border border-light-outline-variant px-gutter-md py-gutter-sm flex items-center justify-between gap-gutter-md hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change cursor-pointer">
+        <div class="flex items-center gap-gutter-md">
+          <span class="material-symbols-outlined text-light-primary text-[20px]" aria-hidden="true">calendar_today</span>
+          <div class="flex flex-col">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Way Bill Date</span>
+            <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">Tue, 24 Nov 2026</span>
+          </div>
+        </div>
+        <span id="morning-header-pill" data-design-text-token="label-sm" class="font-label text-label-sm text-on-success-container bg-success-container px-gutter-sm py-gutter-xs rounded-full tabular-nums">5 Rates · 552</span>
+      </div>
+
+      <!-- Opening / Closing Segmented Switcher -->
+      <div data-component-id="tabs-with-icon" data-component-type="tabs" data-component-variant="with-icon" class="w-full">
+        <div role="tablist" aria-label="Way Bill Stage" class="grid grid-cols-2 p-gutter-xs rounded-full bg-light-surface-container border border-light-outline-variant">
+          <button role="tab" id="tab-morning" aria-selected="true" aria-controls="panel-morning" tabindex="0" class="min-h-[44px] px-gutter-sm rounded-full bg-light-primary text-light-on-primary font-label text-label-md inline-flex items-center justify-center gap-gutter-xs transition-colors duration-state-change ease-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">confirmation_number</span>
+            <span data-design-text-token="label-md">Opening</span>
+          </button>
+          <a href="../evening-closing/EveningClosing.html" role="tab" id="tab-evening" aria-selected="false" aria-controls="panel-evening" tabindex="-1" class="min-h-[44px] px-gutter-sm rounded-full text-light-on-surface-variant font-label text-label-md inline-flex items-center justify-center gap-gutter-xs hover:text-light-on-surface transition-colors duration-state-change ease-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">receipt_long</span>
+            <span data-design-text-token="label-md">Closing</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Accordion List -->
+    <main class="flex-1 px-page-margin py-gutter-lg flex flex-col gap-gutter-md pb-8">
+
+      <!-- Full-Width Add Button at Top -->
+      <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="w-full inline-flex items-center justify-center gap-gutter-sm min-h-[48px] px-gutter-lg py-gutter-md rounded-md border border-light-primary bg-light-surface-container-lowest text-light-primary font-label text-label-lg hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span>
+        <span data-design-text-token="label-lg">Add New Ticket Rate</span>
+      </button>
+
+      <!-- Collapsed Rate 1 Row -->
+      <div class="rounded-md bg-light-surface-container-lowest border border-light-outline-variant px-gutter-lg py-gutter-md flex items-center justify-between gap-gutter-sm">
+        <div class="flex items-center gap-gutter-md">
+          <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums">₹8</span>
+          <span data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">1 Bundle</span>
+        </div>
+        <div class="flex items-center gap-gutter-sm">
+          <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface tabular-nums">100 tickets</span>
+          <span class="material-symbols-outlined text-light-outline text-[20px]" aria-hidden="true">expand_more</span>
+        </div>
+      </div>
+
+      <!-- Collapsed Active Rate 2 Row (shown when collapsed, matches other collapsed rows) -->
+      <button id="active-collapsed-row" type="button" aria-expanded="false" aria-controls="active-expanded-card" class="hidden w-full text-left rounded-md bg-light-surface-container-lowest border border-light-outline-variant px-gutter-lg py-gutter-md flex items-center justify-between gap-gutter-sm hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change">
+        <div class="flex items-center gap-gutter-md">
+          <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums">₹10</span>
+          <span data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">3 Bundles</span>
+        </div>
+        <div class="flex items-center gap-gutter-sm">
+          <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface tabular-nums">250 tickets</span>
+          <span class="material-symbols-outlined text-light-outline text-[20px]" aria-hidden="true">expand_more</span>
+        </div>
+      </button>
+
+      <!-- Expanded Active Rate 2 Card -->
+      <article id="active-expanded-card" data-component-id="card-action" data-component-type="card" data-component-variant="action" class="w-full rounded-md bg-light-surface-container-lowest border border-light-primary p-gutter-xl flex flex-col gap-gutter-lg shadow-sm">
+        <header class="flex items-center justify-between gap-gutter-sm">
+          <div class="flex items-center gap-gutter-sm min-w-0">
+            <h2 data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface whitespace-nowrap">₹10 Rate</h2>
+            <span data-design-text-token="label-md" class="font-label text-label-md text-on-success-container bg-success-container px-gutter-sm py-gutter-xs rounded-full tabular-nums whitespace-nowrap shrink-0">250 issued</span>
+          </div>
+          <div class="flex items-center gap-gutter-xs">
+            <button data-component-id="button-icon" data-component-type="button" data-component-variant="icon" type="button" aria-label="Delete ₹10 ticket rate" class="inline-flex items-center justify-center w-10 h-10 rounded-full text-light-error hover:bg-light-error-container transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">delete_outline</span>
+            </button>
+            <button id="btn-collapse-active" data-component-id="button-icon-toggle" data-component-type="button" data-component-variant="icon" type="button" aria-expanded="true" aria-controls="active-expanded-card" aria-label="Collapse ₹10 ticket rate" class="inline-flex items-center justify-center w-10 h-10 rounded-full text-light-primary hover:bg-light-surface-container transition-colors duration-state-change ease-state-change">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">expand_less</span>
+            </button>
+          </div>
+        </header>
+
+        <div id="active-accordion-body" class="flex flex-col gap-gutter-lg">
+          <label class="flex flex-col gap-gutter-xs w-full">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Ticket price (₹)</span>
+            <input type="text" inputmode="numeric" value="10" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums">
+          </label>
+
+          <div class="rounded bg-light-surface-container-low border border-light-outline-variant p-gutter-md flex flex-col gap-gutter-md">
+            <div class="flex items-center justify-between">
+              <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Bundle 1</span>
+              <div class="flex items-center gap-gutter-xs">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-primary tabular-nums">100 tickets</span>
+                <button type="button" aria-label="Remove Bundle 1" class="inline-flex items-center justify-center w-7 h-7 rounded-full text-light-on-surface-variant hover:bg-light-error-container hover:text-light-error transition-colors duration-state-change ease-state-change">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
+                </button>
+              </div>
+            </div>
+            <div role="group" aria-label="Bundle 1 entry type" class="grid grid-cols-2 p-gutter-xs rounded-full bg-light-surface-container border border-light-outline-variant">
+              <button type="button" aria-pressed="true" class="min-h-[40px] rounded-full bg-light-primary text-light-on-primary font-label text-label-sm">Full Bundle</button>
+              <button type="button" aria-pressed="false" class="min-h-[40px] rounded-full text-light-on-surface-variant font-label text-label-sm">Chhit Tickets</button>
+            </div>
+            <div class="flex flex-col gap-gutter-xs">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Total tickets</span>
+              <div class="flex items-center gap-gutter-xs">
+                <button type="button" aria-label="Decrease total tickets" class="w-12 h-12 shrink-0 rounded bg-light-surface-container-lowest border border-light-outline-variant inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">remove</span>
+                </button>
+                <input type="text" inputmode="numeric" value="100" placeholder="100" class="flex-1 min-w-0 min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface text-center tabular-nums">
+                <button type="button" aria-label="Increase total tickets" class="w-12 h-12 shrink-0 rounded bg-light-surface-container-lowest border border-light-outline-variant inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded bg-light-surface-container-low border border-light-outline-variant p-gutter-md flex flex-col gap-gutter-md">
+            <div class="flex items-center justify-between">
+              <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Bundle 2</span>
+              <div class="flex items-center gap-gutter-xs">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-primary tabular-nums">100 tickets</span>
+                <button type="button" aria-label="Remove Bundle 2" class="inline-flex items-center justify-center w-7 h-7 rounded-full text-light-on-surface-variant hover:bg-light-error-container hover:text-light-error transition-colors duration-state-change ease-state-change">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
+                </button>
+              </div>
+            </div>
+            <div role="group" aria-label="Bundle 2 entry type" class="grid grid-cols-2 p-gutter-xs rounded-full bg-light-surface-container border border-light-outline-variant">
+              <button type="button" aria-pressed="true" class="min-h-[40px] rounded-full bg-light-primary text-light-on-primary font-label text-label-sm">Full Bundle</button>
+              <button type="button" aria-pressed="false" class="min-h-[40px] rounded-full text-light-on-surface-variant font-label text-label-sm">Chhit Tickets</button>
+            </div>
+            <div class="flex flex-col gap-gutter-xs">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Total tickets</span>
+              <div class="flex items-center gap-gutter-xs">
+                <button type="button" aria-label="Decrease total tickets" class="w-12 h-12 shrink-0 rounded bg-light-surface-container-lowest border border-light-outline-variant inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">remove</span>
+                </button>
+                <input type="text" inputmode="numeric" value="100" placeholder="100" class="flex-1 min-w-0 min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface text-center tabular-nums">
+                <button type="button" aria-label="Increase total tickets" class="w-12 h-12 shrink-0 rounded bg-light-surface-container-lowest border border-light-outline-variant inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container transition-colors">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded bg-light-surface-container-low border border-light-outline-variant p-gutter-md flex flex-col gap-gutter-md">
+            <div class="flex items-center justify-between">
+              <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Bundle 3</span>
+              <div class="flex items-center gap-gutter-xs">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-primary tabular-nums">50 tickets</span>
+                <button type="button" aria-label="Remove Bundle 3" class="inline-flex items-center justify-center w-7 h-7 rounded-full text-light-on-surface-variant hover:bg-light-error-container hover:text-light-error transition-colors duration-state-change ease-state-change">
+                  <span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span>
+                </button>
+              </div>
+            </div>
+            <div role="group" aria-label="Bundle 3 entry type" class="grid grid-cols-2 p-gutter-xs rounded-full bg-light-surface-container border border-light-outline-variant">
+              <button type="button" aria-pressed="false" class="min-h-[40px] rounded-full text-light-on-surface-variant font-label text-label-sm">Full Bundle</button>
+              <button type="button" aria-pressed="true" class="min-h-[40px] rounded-full bg-light-primary text-light-on-primary font-label text-label-sm">Chhit Tickets</button>
+            </div>
+            <div class="grid grid-cols-2 gap-gutter-md">
+              <label class="flex flex-col gap-gutter-xs">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">First ticket no.</span>
+                <input type="text" inputmode="numeric" value="651" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums">
+              </label>
+              <label class="flex flex-col gap-gutter-xs">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Last ticket no.</span>
+                <input type="text" inputmode="numeric" value="700" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums">
+              </label>
+            </div>
+          </div>
+
+          <button data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" class="w-full inline-flex items-center justify-center gap-gutter-sm min-h-[44px] px-gutter-lg py-gutter-sm rounded border border-dashed border-light-outline-variant bg-light-surface-container-low text-light-primary font-label text-label-lg">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">add_circle_outline</span>
+            <span data-design-text-token="label-lg">Add Another Bundle</span>
+          </button>
+        </div>
+      </article>
+
+      <!-- Collapsed Remaining Rate Rows -->
+      <div class="rounded-md bg-light-surface-container-lowest border border-light-outline-variant px-gutter-lg py-gutter-md flex items-center justify-between gap-gutter-sm">
+        <div class="flex items-center gap-gutter-md">
+          <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums">₹12</span>
+          <span data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">1 Bundle</span>
+        </div>
+        <div class="flex items-center gap-gutter-sm">
+          <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface tabular-nums">100 tickets</span>
+          <span class="material-symbols-outlined text-light-outline text-[20px]" aria-hidden="true">expand_more</span>
+        </div>
+      </div>
+
+      <div class="rounded-md bg-light-surface-container-lowest border border-light-outline-variant px-gutter-lg py-gutter-md flex items-center justify-between gap-gutter-sm">
+        <div class="flex items-center gap-gutter-md">
+          <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums">₹15</span>
+          <span data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">1 Bundle</span>
+        </div>
+        <div class="flex items-center gap-gutter-sm">
+          <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface tabular-nums">50 tickets</span>
+          <span class="material-symbols-outlined text-light-outline text-[20px]" aria-hidden="true">expand_more</span>
+        </div>
+      </div>
+
+      <div class="rounded-md bg-light-surface-container-lowest border border-light-outline-variant px-gutter-lg py-gutter-md flex items-center justify-between gap-gutter-sm">
+        <div class="flex items-center gap-gutter-md">
+          <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums">₹20</span>
+          <span data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">1 Bundle</span>
+        </div>
+        <div class="flex items-center gap-gutter-sm">
+          <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface tabular-nums">50 tickets</span>
+          <span class="material-symbols-outlined text-light-outline text-[20px]" aria-hidden="true">expand_more</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Sticky Bottom Save CTA -->
+    <footer class="sticky bottom-0 w-full z-30 bg-light-surface-container-lowest border-t border-light-outline-variant px-page-margin py-gutter-md shadow-lg flex flex-col gap-gutter-sm">
+      <div class="flex items-center justify-between">
+        <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Total tickets issued</span>
+        <span id="morning-footer-total" data-design-text-token="mono-lg" class="font-mono text-mono-lg text-light-on-surface tabular-nums">550 tickets</span>
+      </div>
+      <div class="grid grid-cols-3 gap-gutter-sm">
+        <a href="../step-1-trip-details/TripDetails.html" data-component-id="button-tertiary" data-component-type="button" data-component-variant="tertiary" class="col-span-1 inline-flex items-center justify-center gap-gutter-xs min-h-[48px] px-gutter-md rounded-md border border-light-outline-variant bg-light-surface-container-low text-light-on-surface font-label text-label-lg">
+          <span data-design-text-token="label-lg">Back</span>
+        </a>
+        <a id="btn-save-morning" href="../evening-closing/EveningClosing.html" data-component-id="button-primary" data-component-type="button" data-component-variant="primary" class="col-span-2 inline-flex items-center justify-center gap-gutter-sm min-h-[48px] px-gutter-lg py-gutter-md rounded-md bg-light-primary text-light-on-primary font-label text-label-lg hover:bg-light-primary-container transition-colors duration-state-change ease-state-change">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">lock</span>
+          <span data-design-text-token="label-lg">Save Opening</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'joymaa_waybill_v2';
+      var main = document.querySelector('main');
+      var addRateBtn = main ? main.querySelector('button[data-component-variant="secondary"]') : null;
+      var headerPill = document.getElementById('morning-header-pill');
+      var footerTotal = document.getElementById('morning-footer-total');
+      var saveBtn = document.getElementById('btn-save-morning');
+      if (!main || !addRateBtn) return;
+
+      var defaultRates = [
+        { id: 'r1', price: 8, bundles: [{ mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 'all_sold' }] },
+        { id: 'r2', price: 10, bundles: [
+          { mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 'all_sold' },
+          { mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 689, lastReturned: 700 },
+          { mode: 'chhit', qty: 1, perBundle: 50, first: 651, last: 700, firstReturned: 'all_returned' }
+        ] },
+        { id: 'r3', price: 12, bundles: [
+          { mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 'all_sold' },
+          { mode: 'chhit', qty: 1, perBundle: 25, first: 651, last: 675, firstReturned: 'all_sold' }
+        ] },
+        { id: 'r4', price: 15, bundles: [{ mode: 'chhit', qty: 1, perBundle: 50, first: 650, last: 700, firstReturned: 679 }] },
+        { id: 'r5', price: 20, bundles: [{ mode: 'chhit', qty: 1, perBundle: 50, first: 650, last: 700, firstReturned: 671 }] }
+      ];
+
+      function loadState() {
+        try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; }
+      }
+
+      var st = loadState();
+      var rates = Array.isArray(st.rates) && st.rates.length ? st.rates : JSON.parse(JSON.stringify(defaultRates));
+      (function () {
+        var changed = false;
+        rates.forEach(function (r) {
+          var nextBundles = [];
+          (r.bundles || []).forEach(function (b) {
+            if (b.mode === 'chhit' && ((b.first == 1101 && b.last == 1150) || (b.first == 401 && b.last == 450) || (b.first == 501 && b.last == 550))) {
+              b.first = (r.id === 'r4' || r.id === 'r5') ? 650 : 651;
+              b.last = 700;
+              if (b.firstReturned == 429 || b.firstReturned == 1129) b.firstReturned = 679;
+              else if (b.firstReturned == 431) b.firstReturned = 681;
+              else if (b.firstReturned == 521) b.firstReturned = 671;
+              changed = true;
+            } else if (b.mode === 'chhit' && (r.id === 'r4' || r.id === 'r5') && b.first == 651 && b.last == 700) {
+              b.first = 650;
+              changed = true;
+            }
+            if (b.mode === 'full' && (parseInt(b.qty, 10) || 1) > 1) {
+              var count = parseInt(b.qty, 10) || 1;
+              for (var i = 0; i < count; i++) {
+                nextBundles.push({
+                  mode: 'full',
+                  qty: 1,
+                  perBundle: parseInt(b.perBundle, 10) || 100,
+                  first: 601,
+                  last: 700,
+                  firstReturned: i === count - 1 ? (b.firstReturned === 1042 ? 689 : (b.firstReturned || 'all_sold')) : 'all_sold',
+                  lastReturned: i === count - 1 ? 700 : undefined
+                });
+              }
+              changed = true;
+            } else {
+              if (b.mode === 'full' && (!b.first || b.first == 1 || b.first == 201 || b.first == 1001)) {
+                b.first = 601;
+                b.last = 700;
+                changed = true;
+              }
+              nextBundles.push(b);
+            }
+          });
+          r.bundles = nextBundles;
+        });
+        if (changed) {
+          st.rates = rates;
+          try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {}
+        }
+      })();
+
+      var activeId = rates[1] ? rates[1].id : (rates[0] ? rates[0].id : null);
+      var editingPerBundleId = null;
+      var editingPriceId = null;
+
+      function bundleIssued(b) {
+        if (b.mode === 'full') {
+          return parseInt(b.perBundle, 10) || 0;
+        }
+        var f = parseInt(b.first, 10) || 0;
+        var l = parseInt(b.last, 10) || 0;
+        return l >= f && f > 0 ? (l - f + 1) : 0;
+      }
+
+      function rateIssued(r) {
+        return r.bundles.reduce(function (sum, b) { return sum + bundleIssued(b); }, 0);
+      }
+
+      function getFullBundles(r) {
+        return r.bundles.filter(function (b) { return b.mode === 'full'; });
+      }
+
+      function getChhitBundles(r) {
+        return r.bundles.filter(function (b) { return b.mode === 'chhit'; });
+      }
+
+      function getPerBundle(r) {
+        var fulls = getFullBundles(r);
+        if (fulls.length && fulls[0].perBundle !== undefined) return parseInt(fulls[0].perBundle, 10) || 100;
+        return parseInt(r.perBundle, 10) || 100;
+      }
+
+      function setFullBundleCount(r, nextCount) {
+        nextCount = Math.max(0, nextCount);
+        var per = getPerBundle(r);
+        r.perBundle = per;
+        var fulls = getFullBundles(r);
+        var chhits = getChhitBundles(r);
+        if (nextCount > fulls.length) {
+          for (var i = fulls.length; i < nextCount; i++) {
+            fulls.push({ mode: 'full', qty: 1, perBundle: per, first: 601, last: 700, firstReturned: 'all_sold' });
+          }
+        } else if (nextCount < fulls.length) {
+          fulls = fulls.slice(0, nextCount);
+        }
+        r.bundles = fulls.concat(chhits);
+      }
+
+      function formatRateSubtitle(r) {
+        var fullCount = getFullBundles(r).length;
+        var chhitCount = getChhitBundles(r).length;
+        var issued = rateIssued(r);
+        var parts = [];
+        if (fullCount > 0) parts.push(fullCount + ' Full');
+        if (chhitCount > 0) parts.push(chhitCount + ' Chhit');
+        if (!parts.length) return issued + ' tickets';
+        return parts.join(' + ') + ' · ' + issued + ' tickets';
+      }
+
+      function saveRates() {
+        var cur = loadState();
+        cur.rates = rates;
+        try { localStorage.setItem(KEY, JSON.stringify(cur)); } catch (e) {}
+      }
+
+      function updateTotalsOnly() {
+        var total = rates.reduce(function (sum, r) { return sum + rateIssued(r); }, 0);
+        if (headerPill) headerPill.textContent = rates.length + ' Rates · ' + total;
+        if (footerTotal) footerTotal.textContent = total + ' tickets';
+        saveRates();
+      }
+
+      function suggestNextHundred(f) {
+        if (!f || f <= 0) return '';
+        return Math.ceil(f / 100) * 100;
+      }
+
+      function render() {
+        while (addRateBtn.nextSibling) {
+          main.removeChild(addRateBtn.nextSibling);
+        }
+
+        rates.forEach(function (rate) {
+          var issued = rateIssued(rate);
+          var fulls = getFullBundles(rate);
+          var chhits = getChhitBundles(rate);
+          var fullCount = fulls.length;
+          var perBundle = getPerBundle(rate);
+          var fullTotal = fullCount * perBundle;
+
+          if (rate.id !== activeId) {
+            var row = document.createElement('div');
+            row.setAttribute('role', 'button');
+            row.setAttribute('tabindex', '0');
+            row.setAttribute('aria-expanded', 'false');
+            row.className = 'w-full rounded-md bg-light-surface-container-lowest border border-light-outline-variant px-gutter-md py-gutter-md flex items-center justify-between gap-gutter-sm hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change cursor-pointer';
+            var chhitPill = chhits.length > 0
+              ? '<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-light-surface-container border border-light-outline-variant font-label text-label-sm text-light-primary whitespace-nowrap">+' + chhits.length + ' Chhit</span>'
+              : '';
+            row.innerHTML =
+              '<div class="flex flex-col gap-0.5 min-w-0">' +
+                '<div class="flex items-center gap-gutter-sm">' +
+                  '<span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums font-bold">₹' + (rate.price || 0) + '</span>' +
+                  chhitPill +
+                '</div>' +
+                '<span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant truncate tabular-nums">' + formatRateSubtitle(rate) + '</span>' +
+              '</div>' +
+              '<div class="flex items-center gap-gutter-sm shrink-0">' +
+                '<div class="inline-flex items-center rounded border border-light-outline-variant bg-light-surface-container-low" data-stepper-wrap>' +
+                  '<button data-row-dec type="button" aria-label="Decrease full bundles for ₹' + (rate.price || 0) + '" class="w-9 h-9 inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container transition-colors">' +
+                    '<span class="material-symbols-outlined text-[18px]" aria-hidden="true">remove</span>' +
+                  '</button>' +
+                  '<span class="w-8 text-center font-mono text-mono-md text-light-on-surface tabular-nums">' + fullCount + '</span>' +
+                  '<button data-row-inc type="button" aria-label="Increase full bundles for ₹' + (rate.price || 0) + '" class="w-9 h-9 inline-flex items-center justify-center text-light-primary hover:bg-light-surface-container transition-colors">' +
+                    '<span class="material-symbols-outlined text-[18px]" aria-hidden="true">add</span>' +
+                  '</button>' +
+                '</div>' +
+                '<span class="material-symbols-outlined text-light-outline text-[20px]" aria-hidden="true">expand_more</span>' +
+              '</div>';
+
+            row.querySelector('[data-row-dec]').addEventListener('click', function (e) {
+              e.stopPropagation();
+              setFullBundleCount(rate, fullCount - 1);
+              render();
+            });
+            row.querySelector('[data-row-inc]').addEventListener('click', function (e) {
+              e.stopPropagation();
+              setFullBundleCount(rate, fullCount + 1);
+              render();
+            });
+            row.addEventListener('click', function () {
+              activeId = rate.id;
+              render();
+            });
+            row.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                activeId = rate.id;
+                render();
+              }
+            });
+            main.appendChild(row);
+            return;
+          }
+
+          var card = document.createElement('article');
+          card.setAttribute('data-component-id', 'card-action');
+          card.setAttribute('data-component-type', 'card');
+          card.setAttribute('data-component-variant', 'action');
+          card.className = 'w-full rounded-md bg-light-surface-container-lowest border border-light-primary p-gutter-xl flex flex-col gap-gutter-lg shadow-sm';
+
+          var hdr = document.createElement('header');
+          hdr.className = 'flex items-center justify-between gap-gutter-sm';
+          hdr.innerHTML =
+            '<div class="flex items-center gap-gutter-sm min-w-0">' +
+              '<h2 data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface whitespace-nowrap">₹' + (rate.price || 0) + ' Rate</h2>' +
+              '<button data-action="edit-price" type="button" aria-label="Edit ticket price" class="inline-flex items-center justify-center w-7 h-7 rounded-full text-light-on-surface-variant hover:bg-light-surface-container hover:text-light-primary transition-colors">' +
+                '<span class="material-symbols-outlined text-[16px]" aria-hidden="true">edit</span>' +
+              '</button>' +
+              '<span data-issued-pill data-design-text-token="label-md" class="font-label text-label-md text-on-success-container bg-success-container px-gutter-sm py-gutter-xs rounded-full tabular-nums whitespace-nowrap shrink-0">' + issued + ' issued</span>' +
+            '</div>' +
+            '<div class="flex items-center gap-gutter-xs shrink-0">' +
+              '<button data-action="delete" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" type="button" aria-label="Delete ₹' + rate.price + ' ticket rate" class="inline-flex items-center justify-center w-10 h-10 rounded-full text-light-error hover:bg-light-error-container transition-colors duration-state-change ease-state-change"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">delete_outline</span></button>' +
+              '<button data-action="collapse" data-component-id="button-icon-toggle" data-component-type="button" data-component-variant="icon" type="button" aria-expanded="true" aria-label="Collapse ₹' + rate.price + ' ticket rate" class="inline-flex items-center justify-center w-10 h-10 rounded-full text-light-primary hover:bg-light-surface-container transition-colors duration-state-change ease-state-change"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">expand_less</span></button>' +
+            '</div>';
+
+          var titleEl = hdr.querySelector('h2');
+          var issuedBadge = hdr.querySelector('[data-issued-pill]');
+          hdr.querySelector('[data-action="edit-price"]').addEventListener('click', function () {
+            editingPriceId = editingPriceId === rate.id ? null : rate.id;
+            render();
+          });
+          hdr.querySelector('[data-action="delete"]').addEventListener('click', function () {
+            rates = rates.filter(function (r) { return r.id !== rate.id; });
+            activeId = rates[0] ? rates[0].id : null;
+            render();
+          });
+          hdr.querySelector('[data-action="collapse"]').addEventListener('click', function () {
+            activeId = null;
+            editingPerBundleId = null;
+            editingPriceId = null;
+            render();
+          });
+          card.appendChild(hdr);
+
+          var body = document.createElement('div');
+          body.className = 'flex flex-col gap-gutter-lg';
+
+          if (editingPriceId === rate.id) {
+            var priceRow = document.createElement('div');
+            priceRow.className = 'flex items-center justify-between gap-gutter-sm rounded bg-light-surface-container-low border border-light-outline-variant px-gutter-md py-gutter-sm';
+            priceRow.innerHTML = '<span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Ticket price (₹)</span>';
+            var priceCtrl = document.createElement('div');
+            priceCtrl.className = 'flex items-center gap-gutter-xs';
+            var priceInput = document.createElement('input');
+            priceInput.type = 'text';
+            priceInput.inputMode = 'numeric';
+            priceInput.value = rate.price;
+            priceInput.setAttribute('aria-label', 'Ticket price in rupees');
+            priceInput.className = 'w-20 min-h-[38px] px-gutter-sm rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-center text-light-on-surface tabular-nums';
+            priceInput.addEventListener('input', function () {
+              rate.price = parseInt(priceInput.value.replace(/[^\d]/g, ''), 10) || 0;
+              titleEl.textContent = '₹' + rate.price + ' Rate';
+              saveRates();
+            });
+            var priceDone = document.createElement('button');
+            priceDone.type = 'button';
+            priceDone.className = 'min-h-[38px] px-gutter-sm rounded bg-light-primary text-light-on-primary font-label text-label-sm';
+            priceDone.textContent = 'Done';
+            priceDone.addEventListener('click', function () {
+              editingPriceId = null;
+              render();
+            });
+            priceCtrl.appendChild(priceInput);
+            priceCtrl.appendChild(priceDone);
+            priceRow.appendChild(priceCtrl);
+            body.appendChild(priceRow);
+          }
+
+          // Full Bundles section
+          var fullSection = document.createElement('div');
+          fullSection.className = 'flex flex-col gap-gutter-sm';
+
+          var fullRow = document.createElement('div');
+          fullRow.className = 'flex items-center justify-between gap-gutter-sm';
+          fullRow.innerHTML =
+            '<span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Full Bundles</span>' +
+            '<div class="inline-flex items-center rounded border border-light-outline-variant bg-light-surface-container-low">' +
+              '<button data-full-dec type="button" aria-label="Decrease full bundles" class="w-11 h-11 inline-flex items-center justify-center text-light-on-surface hover:bg-light-surface-container transition-colors">' +
+                '<span class="material-symbols-outlined text-[20px]" aria-hidden="true">remove</span>' +
+              '</button>' +
+              '<span class="w-10 text-center font-mono text-mono-md text-light-on-surface tabular-nums font-bold">' + fullCount + '</span>' +
+              '<button data-full-inc type="button" aria-label="Increase full bundles" class="w-11 h-11 inline-flex items-center justify-center text-light-primary hover:bg-light-surface-container transition-colors">' +
+                '<span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span>' +
+              '</button>' +
+            '</div>';
+
+          fullRow.querySelector('[data-full-dec]').addEventListener('click', function () {
+            setFullBundleCount(rate, fullCount - 1);
+            render();
+          });
+          fullRow.querySelector('[data-full-inc]').addEventListener('click', function () {
+            setFullBundleCount(rate, fullCount + 1);
+            render();
+          });
+          fullSection.appendChild(fullRow);
+
+          var helperRow = document.createElement('div');
+          helperRow.className = 'flex items-center justify-between gap-gutter-sm pt-gutter-xs';
+          if (editingPerBundleId === rate.id) {
+            helperRow.innerHTML =
+              '<div class="flex items-center gap-gutter-sm w-full pt-gutter-xs">' +
+                '<span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Tickets / bundle:</span>' +
+                '<input data-per-input type="text" inputmode="numeric" value="' + perBundle + '" aria-label="Tickets per bundle" class="w-20 min-h-[36px] px-gutter-sm rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-center text-light-on-surface tabular-nums">' +
+                '<button data-per-done type="button" class="min-h-[36px] px-gutter-sm rounded bg-light-primary text-light-on-primary font-label text-label-sm">Done</button>' +
+              '</div>';
+            var perIn = helperRow.querySelector('[data-per-input]');
+            perIn.addEventListener('input', function () {
+              var val = parseInt(perIn.value.replace(/[^\d]/g, ''), 10) || 0;
+              rate.perBundle = val;
+              getFullBundles(rate).forEach(function (fb) { fb.perBundle = val; });
+              issuedBadge.textContent = rateIssued(rate) + ' issued';
+              updateTotalsOnly();
+            });
+            helperRow.querySelector('[data-per-done]').addEventListener('click', function () {
+              editingPerBundleId = null;
+              render();
+            });
+          } else {
+            helperRow.innerHTML =
+              '<div class="flex items-center flex-wrap gap-x-gutter-md gap-y-gutter-xs">' +
+                '<span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant tabular-nums">' + perBundle + ' / bundle</span>' +
+                '<span data-design-text-token="label-sm" class="font-label text-label-sm font-semibold text-light-primary bg-light-surface-container px-2 py-0.5 rounded-full tabular-nums">' + fullTotal + ' tickets</span>' +
+              '</div>' +
+              '<button data-per-edit type="button" aria-label="Edit tickets per bundle" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-light-outline-variant bg-light-surface-container-low text-light-primary font-label text-label-sm hover:bg-light-surface-container transition-colors shrink-0">' +
+                '<span class="material-symbols-outlined text-[15px]" aria-hidden="true">tune</span>' +
+                '<span>Edit</span>' +
+              '</button>';
+            helperRow.querySelector('[data-per-edit]').addEventListener('click', function () {
+              editingPerBundleId = rate.id;
+              render();
+            });
+          }
+          fullSection.appendChild(helperRow);
+          body.appendChild(fullSection);
+
+          // Chhit Bundles section
+          var chhitSection = document.createElement('div');
+          chhitSection.className = 'flex flex-col gap-gutter-sm pt-gutter-sm border-t border-light-outline-variant';
+
+          var chhitTitle = document.createElement('span');
+          chhitTitle.setAttribute('data-design-text-token', 'label-lg');
+          chhitTitle.className = 'font-label text-label-lg text-light-on-surface';
+          chhitTitle.textContent = 'Chhit Bundles';
+          chhitSection.appendChild(chhitTitle);
+
+          chhits.forEach(function (b, cIdx) {
+            var cDiv = document.createElement('div');
+            cDiv.className = 'rounded bg-light-surface-container-low border border-light-outline-variant p-gutter-md flex flex-col gap-gutter-sm';
+            var cCount = bundleIssued(b);
+            cDiv.innerHTML =
+              '<div class="flex items-center justify-between">' +
+                '<span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Chhit ' + (cIdx + 1) + '</span>' +
+                '<div class="flex items-center gap-gutter-xs">' +
+                  '<span data-c-count data-design-text-token="label-md" class="font-label text-label-md text-light-primary tabular-nums">' + cCount + ' tickets</span>' +
+                  '<button data-remove-chhit type="button" aria-label="Remove Chhit ' + (cIdx + 1) + '" class="inline-flex items-center justify-center w-7 h-7 rounded-full text-light-on-surface-variant hover:bg-light-error-container hover:text-light-error transition-colors duration-state-change ease-state-change"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">close</span></button>' +
+                '</div>' +
+              '</div>';
+
+            var cCountEl = cDiv.querySelector('[data-c-count]');
+            cDiv.querySelector('[data-remove-chhit]').addEventListener('click', function () {
+              var idxInAll = rate.bundles.indexOf(b);
+              if (idxInAll !== -1) rate.bundles.splice(idxInAll, 1);
+              render();
+            });
+
+            var grid = document.createElement('div');
+            grid.className = 'grid grid-cols-2 gap-gutter-md';
+
+            var fWrap = document.createElement('label');
+            fWrap.className = 'flex flex-col gap-gutter-xs';
+            fWrap.innerHTML = '<span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">First ticket no.</span>';
+            var fIn = document.createElement('input');
+            fIn.type = 'text'; fIn.inputMode = 'numeric'; fIn.value = b.first || ''; fIn.placeholder = 'Enter no.';
+            fIn.className = 'w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline';
+            fWrap.appendChild(fIn);
+
+            var lWrap = document.createElement('label');
+            lWrap.className = 'flex flex-col gap-gutter-xs';
+            lWrap.innerHTML = '<span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Last ticket no.</span>';
+            var lIn = document.createElement('input');
+            lIn.type = 'text'; lIn.inputMode = 'numeric'; lIn.value = b.last || ''; lIn.placeholder = 'Enter no.';
+            lIn.className = 'w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline';
+            lWrap.appendChild(lIn);
+
+            function syncChhitCounts() {
+              cCountEl.textContent = bundleIssued(b) + ' tickets';
+              issuedBadge.textContent = rateIssued(rate) + ' issued';
+              updateTotalsOnly();
+            }
+
+            fIn.addEventListener('input', function () {
+              var rawF = fIn.value.replace(/[^\d]/g, '');
+              b.first = rawF ? parseInt(rawF, 10) : '';
+              if (b.first && (b.last === '' || b.last === undefined || b._autoLast)) {
+                var suggested = suggestNextHundred(b.first);
+                b.last = suggested;
+                lIn.value = suggested;
+                b._autoLast = true;
+              }
+              syncChhitCounts();
+            });
+
+            lIn.addEventListener('input', function () {
+              var rawL = lIn.value.replace(/[^\d]/g, '');
+              b.last = rawL ? parseInt(rawL, 10) : '';
+              b._autoLast = false;
+              syncChhitCounts();
+            });
+
+            grid.appendChild(fWrap);
+            grid.appendChild(lWrap);
+            cDiv.appendChild(grid);
+            chhitSection.appendChild(cDiv);
+          });
+
+          var addChhitBtn = document.createElement('button');
+          addChhitBtn.setAttribute('data-component-id', 'button-with-icon');
+          addChhitBtn.setAttribute('data-component-type', 'button');
+          addChhitBtn.setAttribute('data-component-variant', 'with-icon');
+          addChhitBtn.type = 'button';
+          addChhitBtn.className = 'w-full inline-flex items-center justify-center gap-gutter-sm min-h-[44px] px-gutter-lg py-gutter-sm rounded border border-dashed border-light-outline-variant bg-light-surface-container-low text-light-primary font-label text-label-lg hover:bg-light-surface-container transition-colors';
+          addChhitBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span><span data-design-text-token="label-lg">Add Chhit Bundle</span>';
+          addChhitBtn.addEventListener('click', function () {
+            rate.bundles.push({ mode: 'chhit', qty: 1, perBundle: 0, first: '', last: '', _autoLast: true, firstReturned: 'all_sold' });
+            render();
+          });
+          chhitSection.appendChild(addChhitBtn);
+          body.appendChild(chhitSection);
+
+          card.appendChild(body);
+          main.appendChild(card);
+        });
+
+        updateTotalsOnly();
+      }
+
+      addRateBtn.addEventListener('click', function () {
+        var newId = 'r' + Date.now();
+        rates.push({ id: newId, price: 25, bundles: [{ mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 'all_sold' }] });
+        activeId = newId;
+        render();
+      });
+
+      if (saveBtn) saveBtn.addEventListener('click', saveRates);
+
+      render();
+    })();
+  </script>
+
+
+</body></html>

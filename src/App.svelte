@@ -1,89 +1,66 @@
-<script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from './assets/vite.svg'
-  import heroImg from './assets/hero.png'
-  import Counter from './lib/Counter.svelte'
+<script lang="ts">
+  import StepHeading from './lib/components/StepHeading.svelte';
+  import StepNavigation from './lib/components/StepNavigation.svelte';
+
+  const STEP_KEYS = [
+    'trip',
+    'opening',
+    'closing',
+    'expenses',
+    'final',
+  ] as const;
+
+  type Step = (typeof STEP_KEYS)[number];
+
+  const STEPS = STEP_KEYS.reduce<Record<Step, number>>(
+    (acc, curr, idx) => {
+      acc[curr] = idx;
+      return acc;
+    },
+    {} as Record<Step, number>,
+  );
+
+  const STEP_NAMES = {
+    trip: 'Bus and Trip Details',
+    opening: 'Daily Way Bill (Opening)',
+    closing: 'Daily Way Bill (Closing)',
+    expenses: 'Daily Expenses',
+    final: 'Final Way Bill',
+  } as const satisfies Record<Step, string>;
+
+  let step: Step = $state('trip');
+
+  const goNext = () => {
+    const currentStepNumber = STEPS[step];
+    const nextStepNumber = (currentStepNumber + 1) % STEP_KEYS.length;
+    step = STEP_KEYS[nextStepNumber];
+  };
+
+  const goBack = () => {
+    const currentStepNumber = STEPS[step];
+    const nextStepNumber =
+      (STEP_KEYS.length + (currentStepNumber - 1)) % STEP_KEYS.length;
+    step = STEP_KEYS[nextStepNumber];
+  };
 </script>
 
-<section id="center">
-  <div class="hero">
-    <img src={heroImg} class="base" width="170" height="179" alt="" />
-    <img src={svelteLogo} class="framework" alt="Svelte logo" />
-    <img src={viteLogo} class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/App.svelte</code> and save to test <code>HMR</code></p>
-  </div>
-  <Counter />
-</section>
+<StepNavigation onBack={goBack} onNext={goNext} />
 
-<div class="ticks"></div>
-
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#documentation-icon"></use>
-    </svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank" rel="noreferrer">
-          <img class="logo" src={viteLogo} alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://svelte.dev/" target="_blank" rel="noreferrer">
-          <img class="button-icon" src={svelteLogo} alt="" />
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true">
-      <use href="/icons.svg#social-icon"></use>
-    </svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li>
-        <a href="https://github.com/vitejs/vite" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#github-icon"></use>
-          </svg>
-          GitHub
-        </a>
-      </li>
-      <li>
-        <a href="https://chat.vite.dev/" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#discord-icon"></use>
-          </svg>
-          Discord
-        </a>
-      </li>
-      <li>
-        <a href="https://x.com/vite_js" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#x-icon"></use>
-          </svg>
-          X.com
-        </a>
-      </li>
-      <li>
-        <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noreferrer">
-          <svg class="button-icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#bluesky-icon"></use>
-          </svg>
-          Bluesky
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<div class="ticks"></div>
-<section id="spacer"></section>
+{#if step === 'trip'}
+  <StepHeading title={STEP_NAMES[step]} />
+  <p>Screen 1</p>
+{:else if step === 'opening'}
+  <StepHeading title={STEP_NAMES[step]} />
+  <p>Screen 2</p>
+{:else if step === 'closing'}
+  <StepHeading title={STEP_NAMES[step]} />
+  <p>Screen 3</p>
+{:else if step === 'expenses'}
+  <StepHeading title={STEP_NAMES[step]} />
+  <p>Screen 4</p>
+{:else if step === 'final'}
+  <StepHeading title={STEP_NAMES[step]} />
+  <p>Screen 5</p>
+{:else}
+  <StepHeading title="Invalid Step" />
+{/if}
