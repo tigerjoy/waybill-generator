@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 1 — Bus &amp; Trip Details (Soft Neo-Brutalism)</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00236F',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A8A',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#AC3400',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#FFDBD0',
+        'light-on-secondary-container': '#5D1800',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#FAF7F2',
+        'light-on-background': '#1A1B21',
+        'light-surface': '#FAF7F2',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3EFE6',
+        'light-surface-container': '#EBE6DC',
+        'light-surface-container-high': '#E3DDD2',
+        'light-on-surface': '#1A1B21',
+        'light-on-surface-variant': '#444651',
+        'light-outline': '#757682',
+        'light-outline-variant': '#D5CFC4',
+        'dark-primary': '#B6C4FF',
+        'dark-on-primary': '#05297A',
+        'dark-primary-container': '#1E3A8A',
+        'dark-on-primary-container': '#DCE1FF',
+        'dark-secondary': '#FFB59D',
+        'dark-on-secondary': '#5D1800',
+        'dark-secondary-container': '#B43700',
+        'dark-on-secondary-container': '#FFDBD0',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121318',
+        'dark-on-background': '#E3E1E9',
+        'dark-surface': '#121318',
+        'dark-surface-container-lowest': '#0D0E13',
+        'dark-surface-container-low': '#1A1B21',
+        'dark-surface-container': '#1E1F25',
+        'dark-surface-container-high': '#292A2F',
+        'dark-on-surface': '#E3E1E9',
+        'dark-on-surface-variant': '#C5C5D3',
+        'dark-outline': '#8F909D',
+        'dark-outline-variant': '#444651',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'body': ['"Open Sans"', 'sans-serif'],
+        'label': ['"Open Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'mono-lg': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Open+Sans:wght@600;700&amp;family=Source+Code+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    body { font-family: 'Open Sans', sans-serif; }
+    .nb-heading { font-family: 'Space Grotesk', sans-serif; }
+    .nb-mono { font-family: 'Source Code Pro', monospace; }
+    .material-symbols-outlined { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }
+  </style>
+</head>
+<body class="bg-[#F6F3FF] text-[#18181B] antialiased">
+  <div class="min-h-[884px] w-full max-w-md mx-auto flex flex-col justify-between bg-[#F6F3FF]" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Stepper Header -->
+    <header class="sticky top-0 z-20 bg-[#FFCA7A] border-b-2 border-[#18181B] rounded-b-3xl px-4 pt-4 pb-4 flex flex-col gap-3">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex flex-col">
+          <span class="nb-heading text-xs font-bold tracking-widest uppercase text-[#18181B]">JOY MAA TRAVELS</span>
+          <h1 class="nb-heading text-2xl font-bold text-[#18181B] leading-tight">Bus &amp; Trip Details</h1>
+        </div>
+        <span class="nb-mono text-xs font-bold px-3 py-1.5 bg-[#FFFFFF] text-[#18181B] border-2 border-[#18181B] rounded-full shadow-[0_2px_0_#18181B] tabular-nums">STEP 1/5</span>
+      </div>
+
+      <!-- 5-Step Progress Bar -->
+      <nav class="grid grid-cols-5 gap-1.5" aria-label="Step 1 of 5 progress">
+        <a href="../soft-nb-step-1-trip-details/TripDetailsSoftNB.html" aria-label="Step 1: Bus &amp; Trip Details" aria-current="step" class="block py-1 -my-1 cursor-pointer"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B] tabular-nums">1</span></a>
+        <a href="../soft-nb-step-2-morning-opening/MorningOpeningSoftNB.html" aria-label="Step 2: Morning Opening" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/55 tabular-nums">2</span></a>
+        <a href="../soft-nb-step-3-evening-closing/EveningClosingSoftNB.html" aria-label="Step 3: Evening Closing" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/55 tabular-nums">3</span></a>
+        <a href="../soft-nb-step-4-expenses/DailyExpensesSoftNB.html" aria-label="Step 4: Daily Expenses" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/55 tabular-nums">4</span></a>
+        <a href="../soft-nb-step-5-final-waybill/FinalWayBillSoftNB.html" aria-label="Step 5: Final Way Bill" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/55 tabular-nums">5</span></a>
+      </nav>
+    </header>
+
+    <!-- Main Form Content -->
+    <main class="flex-1 px-4 py-5 flex flex-col gap-5 pb-28">
+
+      <!-- Date & Bus Details Card -->
+      <article class="w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-4">
+        <header class="flex items-center justify-between gap-2 pb-2.5 border-b-2 border-[#18181B]">
+          <h2 class="nb-heading text-lg font-bold uppercase text-[#18181B]">Trip Info</h2>
+        </header>
+
+        <!-- Date Picker Row -->
+        <div class="relative w-full bg-[#F6F3FF] border-2 border-[#18181B] rounded-2xl shadow-[0_2px_0_#18181B] px-3.5 py-2.5 flex items-center justify-between gap-3 cursor-pointer">
+          <input id="waybill-date-input" type="date" value="2026-11-24" aria-label="Way Bill Date" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">calendar_today</span>
+            <div class="flex flex-col">
+              <span class="text-xs font-bold uppercase text-[#3F3F46]">Way Bill Date</span>
+              <span id="waybill-date-display" class="nb-heading text-base font-bold text-[#18181B] tabular-nums">Tue, 24 Nov 2026</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">expand_more</span>
+        </div>
+
+        <!-- Bus Number Combobox -->
+        <div class="relative flex flex-col gap-1.5 w-full" id="bus-combobox-wrapper">
+          <label for="bus-number-input" class="text-xs font-bold uppercase text-[#18181B]">Bus Number (Gari No.)</label>
+          <div class="relative flex items-center">
+            <input id="bus-number-input" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="bus-number-listbox" value="WB 07 J 4625" placeholder="Type or select bus no." autocomplete="off" class="w-full min-h-12 pl-3.5 pr-14 py-2 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] uppercase placeholder:text-[#52525B] focus:bg-[#FFF3D6] focus:outline-none">
+            <button id="bus-dropdown-toggle" type="button" aria-label="Show saved bus numbers" aria-expanded="false" aria-controls="bus-number-listbox" class="absolute right-1.5 inline-flex items-center justify-center w-9 h-9 bg-[#FFA8E2] border-2 border-[#18181B] rounded-full text-[#18181B]">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">expand_more</span>
+            </button>
+          </div>
+          <span class="text-xs font-semibold text-[#3F3F46]">Type a new bus number or pick from saved buses.</span>
+
+          <!-- Autocomplete Dropdown -->
+          <ul id="bus-number-listbox" role="listbox" aria-label="Saved bus numbers" class="hidden absolute left-0 right-0 top-[78px] z-30 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl shadow-[0_4px_0_#18181B] py-1 max-h-56 overflow-y-auto"></ul>
+        </div>
+      </article>
+
+      <!-- Crew Details Card -->
+      <article class="w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-4">
+        <header class="pb-2.5 border-b-2 border-[#18181B]">
+          <h2 class="nb-heading text-lg font-bold uppercase text-[#18181B]">Staff on Duty</h2>
+        </header>
+
+        <label class="flex flex-col gap-1.5 w-full">
+          <span class="text-xs font-bold uppercase text-[#18181B]">Driver Name</span>
+          <input id="driver-name-input" type="text" value="Ramesh Mondal" placeholder="Enter driver name" class="w-full min-h-12 px-3.5 py-2 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl text-base font-semibold text-[#18181B] placeholder:text-[#52525B] focus:bg-[#FFF3D6] focus:outline-none">
+        </label>
+
+        <label class="flex flex-col gap-1.5 w-full">
+          <span class="text-xs font-bold uppercase text-[#18181B]">Driver License Number</span>
+          <input id="driver-license-input" type="text" value="WB07 20180045192" placeholder="e.g. WB07 20180045192" class="w-full min-h-12 px-3.5 py-2 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] uppercase placeholder:text-[#52525B] focus:bg-[#FFF3D6] focus:outline-none">
+        </label>
+
+        <label class="flex flex-col gap-1.5 w-full">
+          <span class="text-xs font-bold uppercase text-[#18181B]">Conductor Name</span>
+          <input id="conductor-name-input" type="text" value="Suman Das" placeholder="Enter conductor name" class="w-full min-h-12 px-3.5 py-2 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl text-base font-semibold text-[#18181B] placeholder:text-[#52525B] focus:bg-[#FFF3D6] focus:outline-none">
+        </label>
+
+        <!-- Bag Money with Isolation Note -->
+        <label class="flex flex-col gap-1.5 w-full">
+          <span class="text-xs font-bold uppercase text-[#18181B]">Bag Money (₹)</span>
+          <div class="relative flex items-center">
+            <span aria-hidden="true" class="absolute left-3.5 nb-mono text-base font-bold text-[#18181B]">₹</span>
+            <input id="bag-money-input" type="text" inputmode="numeric" value="500" placeholder="500" class="w-full min-h-12 pl-8 pr-3.5 py-2 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] tabular-nums placeholder:text-[#52525B] focus:bg-[#FFF3D6] focus:outline-none">
+          </div>
+          <span class="text-xs font-semibold text-[#3F3F46]">For reference only — not included in final balance.</span>
+        </label>
+      </article>
+
+    </main>
+
+    <!-- Sticky Bottom Navigation Footer -->
+    <footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-30 bg-[#FAF8FF] border-t-2 border-[#18181B] rounded-t-3xl px-4 py-3">
+      <a href="../soft-nb-step-2-morning-opening/MorningOpeningSoftNB.html" class="w-full inline-flex items-center justify-center gap-2 min-h-12 px-5 py-3 bg-[#232325] text-[#FFFFFF] border-2 border-[#18181B] rounded-full shadow-[0_3px_0_#18181B] nb-heading text-base font-bold uppercase tracking-wide active:translate-y-[2px] active:shadow-none transition-all">
+        <span>Next: Issue Tickets</span>
+        <span class="material-symbols-outlined text-[20px]" aria-hidden="true">arrow_forward</span>
+      </a>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = 'joymaa_saved_buses';
+      var defaultBuses = ['WB 07 J 4625', 'WB 07 K 1190', 'WB 19 H 8834', 'WB 04 G 3021'];
+      var savedBuses;
+      try {
+        savedBuses = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || defaultBuses.slice();
+      } catch (e) {
+        savedBuses = defaultBuses.slice();
+      }
+
+      var wrapper = document.getElementById('bus-combobox-wrapper');
+      var input = document.getElementById('bus-number-input');
+      var toggle = document.getElementById('bus-dropdown-toggle');
+      var listbox = document.getElementById('bus-number-listbox');
+      if (!wrapper || !input || !toggle || !listbox) return;
+
+      function persistBuses() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(savedBuses)); } catch (e) {}
+      }
+
+      function setOpen(open) {
+        listbox.classList.toggle('hidden', !open);
+        input.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        var icon = toggle.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = open ? 'expand_less' : 'expand_more';
+      }
+
+      function renderOptions(filterText) {
+        var query = (filterText || '').trim().toUpperCase();
+        var matches = savedBuses.filter(function (bus) {
+          return !query || bus.toUpperCase().indexOf(query) !== -1;
+        });
+
+        listbox.innerHTML = '';
+
+        matches.forEach(function (bus) {
+          var li = document.createElement('li');
+          li.setAttribute('role', 'option');
+          li.setAttribute('aria-selected', bus.toUpperCase() === input.value.trim().toUpperCase() ? 'true' : 'false');
+          li.className = 'px-3.5 py-2.5 min-h-11 flex items-center justify-between gap-2 cursor-pointer hover:bg-[#FFCA7A] nb-mono text-sm font-bold text-[#18181B] border-b border-[#18181B] last:border-b-0';
+
+          var label = document.createElement('span');
+          label.textContent = bus;
+
+          var badge = document.createElement('span');
+          badge.className = 'text-xs font-bold uppercase px-2 py-0.5 bg-[#C8EC74] border border-[#18181B] rounded-full';
+          badge.textContent = 'SAVED';
+
+          li.appendChild(label);
+          li.appendChild(badge);
+          li.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            input.value = bus;
+            setOpen(false);
+          });
+          listbox.appendChild(li);
+        });
+
+        if (query && savedBuses.every(function (b) { return b.toUpperCase() !== query; })) {
+          var addLi = document.createElement('li');
+          addLi.setAttribute('role', 'option');
+          addLi.className = 'px-3.5 py-2.5 min-h-11 flex items-center gap-2 cursor-pointer bg-[#C8EC74] hover:bg-[#FFCA7A] text-[#18181B] text-sm font-bold border-t-2 border-[#18181B]';
+          addLi.innerHTML = '<span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_circle_outline</span><span>Save &ldquo;' + query + '&rdquo;</span>';
+          addLi.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            savedBuses.unshift(query);
+            persistBuses();
+            input.value = query;
+            setOpen(false);
+          });
+          listbox.appendChild(addLi);
+        }
+      }
+
+      input.addEventListener('focus', function () { renderOptions(''); setOpen(true); });
+      input.addEventListener('input', function () { renderOptions(input.value); setOpen(true); });
+      toggle.addEventListener('click', function () {
+        var isOpen = !listbox.classList.contains('hidden');
+        if (isOpen) setOpen(false);
+        else { renderOptions(''); setOpen(true); input.focus(); }
+      });
+      document.addEventListener('click', function (e) {
+        if (!wrapper.contains(e.target)) setOpen(false);
+      });
+    })();
+
+    (function () {
+      var KEY = 'joymaa_waybill_v1';
+      var dateEl = document.getElementById('waybill-date-input');
+      var dateDisplayEl = document.getElementById('waybill-date-display');
+      var busEl = document.getElementById('bus-number-input');
+      var driverEl = document.getElementById('driver-name-input');
+      var licenseEl = document.getElementById('driver-license-input');
+      var conductorEl = document.getElementById('conductor-name-input');
+      var bagEl = document.getElementById('bag-money-input');
+
+      function formatWaybillDate(iso) {
+        if (!iso) return 'Tue, 24 Nov 2026';
+        var parts = iso.split('-');
+        if (parts.length !== 3) return 'Tue, 24 Nov 2026';
+        var d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+        if (isNaN(d.getTime())) return 'Tue, 24 Nov 2026';
+        var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+      }
+      function updateDateDisplay() {
+        if (!dateEl || !dateDisplayEl) return;
+        dateDisplayEl.textContent = formatWaybillDate(dateEl.value || '2026-11-24');
+      }
+      function loadState() {
+        try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; }
+      }
+      function saveStep1() {
+        var st = loadState();
+        var iso = (dateEl && dateEl.value) || '2026-11-24';
+        st.trip = {
+          dateISO: iso,
+          date: formatWaybillDate(iso),
+          busNo: (busEl && busEl.value.trim().toUpperCase()) || 'WB 07 J 4625',
+          driverName: (driverEl && driverEl.value.trim()) || 'Ramesh Mondal',
+          driverLicense: (licenseEl && licenseEl.value.trim().toUpperCase()) || 'WB07 20180045192',
+          conductorName: (conductorEl && conductorEl.value.trim()) || 'Suman Das',
+          bagMoney: (bagEl && bagEl.value.replace(/[^\d.]/g, '')) || '500'
+        };
+        try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {}
+      }
+
+      var existing = loadState();
+      if (existing.trip) {
+        if (dateEl && existing.trip.dateISO) dateEl.value = existing.trip.dateISO;
+        if (busEl && existing.trip.busNo) busEl.value = existing.trip.busNo;
+        if (driverEl && existing.trip.driverName) driverEl.value = existing.trip.driverName;
+        if (licenseEl && existing.trip.driverLicense) licenseEl.value = existing.trip.driverLicense;
+        if (conductorEl && existing.trip.conductorName) conductorEl.value = existing.trip.conductorName;
+        if (bagEl && existing.trip.bagMoney) bagEl.value = existing.trip.bagMoney;
+        updateDateDisplay();
+      } else {
+        updateDateDisplay();
+        saveStep1();
+      }
+
+      if (dateEl) {
+        dateEl.addEventListener('click', function () {
+          try { if (dateEl.showPicker) dateEl.showPicker(); } catch (e) {}
+        });
+        dateEl.addEventListener('change', function () {
+          updateDateDisplay();
+          saveStep1();
+        });
+        dateEl.addEventListener('input', function () {
+          updateDateDisplay();
+          saveStep1();
+        });
+      }
+      [busEl, driverEl, licenseEl, conductorEl, bagEl].forEach(function (el) {
+        if (el) el.addEventListener('input', saveStep1);
+      });
+      var nextLink = document.querySelector('footer a');
+      if (nextLink) nextLink.addEventListener('click', saveStep1);
+      var listbox = document.getElementById('bus-number-listbox');
+      if (listbox) listbox.addEventListener('mousedown', function () { setTimeout(saveStep1, 0); });
+    })();
+  </script>
+
+
+</body></html>

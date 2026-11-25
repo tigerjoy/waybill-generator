@@ -1,0 +1,536 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 3 — Evening Closing (Soft Neo-Brutalism)</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00236F',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A8A',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#AC3400',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#FFDBD0',
+        'light-on-secondary-container': '#5D1800',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#FAF7F2',
+        'light-on-background': '#1A1B21',
+        'light-surface': '#FAF7F2',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3EFE6',
+        'light-surface-container': '#EBE6DC',
+        'light-surface-container-high': '#E3DDD2',
+        'light-on-surface': '#1A1B21',
+        'light-on-surface-variant': '#444651',
+        'light-outline': '#757682',
+        'light-outline-variant': '#D5CFC4',
+        'dark-primary': '#B6C4FF',
+        'dark-on-primary': '#05297A',
+        'dark-primary-container': '#1E3A8A',
+        'dark-on-primary-container': '#DCE1FF',
+        'dark-secondary': '#FFB59D',
+        'dark-on-secondary': '#5D1800',
+        'dark-secondary-container': '#B43700',
+        'dark-on-secondary-container': '#FFDBD0',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121318',
+        'dark-on-background': '#E3E1E9',
+        'dark-surface': '#121318',
+        'dark-surface-container-lowest': '#0D0E13',
+        'dark-surface-container-low': '#1A1B21',
+        'dark-surface-container': '#1E1F25',
+        'dark-surface-container-high': '#292A2F',
+        'dark-on-surface': '#E3E1E9',
+        'dark-on-surface-variant': '#C5C5D3',
+        'dark-outline': '#8F909D',
+        'dark-outline-variant': '#444651',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'body': ['"Open Sans"', 'sans-serif'],
+        'label': ['"Open Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'mono-lg': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Open+Sans:wght@600;700&amp;family=Source+Code+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    body { font-family: 'Open Sans', sans-serif; }
+    .nb-heading { font-family: 'Space Grotesk', sans-serif; }
+    .nb-mono { font-family: 'Source Code Pro', monospace; }
+    .material-symbols-outlined { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }
+  </style>
+</head>
+<body class="bg-[#F6F3FF] text-[#18181B] antialiased" data-new-gr-c-s-check-loaded="14.1350.0" data-gr-ext-installed>
+  <div class="min-h-[884px] w-full max-w-md mx-auto flex flex-col justify-between bg-[#F6F3FF]" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Top App Header + Date + Mode Switcher -->
+    <header class="sticky top-0 z-20 bg-[#FFCA7A] border-b-2 border-[#18181B] rounded-b-3xl px-4 pt-4 pb-4 flex flex-col gap-3">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex flex-col">
+          <span class="nb-heading text-xs font-bold tracking-widest uppercase text-[#18181B]">JOY MAA TRAVELS</span>
+          <h1 class="nb-heading text-2xl font-bold text-[#18181B] leading-tight">Daily Way Bill</h1>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="nb-mono text-xs font-bold px-3 py-1 bg-[#FFFFFF] text-[#18181B] border-2 border-[#18181B] rounded-full shadow-[0_2px_0_#18181B] tabular-nums">STEP 3/5</span>
+          <span class="inline-flex items-center gap-1 px-2.5 py-1 bg-[#232325] text-[#FFFFFF] border-2 border-[#18181B] rounded-full text-xs font-bold uppercase">
+            <span class="material-symbols-outlined text-[15px]" aria-hidden="true">receipt_long</span>
+            <span>CLOSE</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- 5-Step Progress Bar -->
+      <nav class="grid grid-cols-5 gap-1.5" aria-label="Step 3 of 5 progress">
+        <a href="../soft-nb-step-1-trip-details/TripDetailsSoftNB.html" aria-label="Step 1: Bus &amp; Trip Details" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/80 tabular-nums">1</span></a>
+        <a href="../soft-nb-step-2-morning-opening/MorningOpeningSoftNB.html" aria-label="Step 2: Opening" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/80 tabular-nums">2</span></a>
+        <a href="../soft-nb-step-3-evening-closing/EveningClosingSoftNB.html" aria-label="Step 3: Closing" aria-current="step" class="block py-1 -my-1 cursor-pointer"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B] tabular-nums">3</span></a>
+        <a href="../soft-nb-step-4-expenses/DailyExpensesSoftNB.html" aria-label="Step 4: Daily Expenses" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/55 tabular-nums">4</span></a>
+        <a href="../soft-nb-step-5-final-waybill/FinalWayBillSoftNB.html" aria-label="Step 5: Final Way Bill" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/55 tabular-nums">5</span></a>
+      </nav>
+
+      <!-- Date Picker Row -->
+      <div class="w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl shadow-[0_2px_0_#18181B] px-3 py-2 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">calendar_today</span>
+          <div class="flex flex-col">
+            <span class="text-[11px] font-bold uppercase text-[#3F3F46]">Way Bill Date</span>
+            <span class="nb-heading text-sm font-bold text-[#18181B] tabular-nums">Tue, 24 Nov 2026</span>
+          </div>
+        </div>
+        <span class="nb-mono text-xs font-bold bg-[#C8EC74] text-[#18181B] border-2 border-[#18181B] rounded-full px-2.5 py-0.5 inline-flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]" aria-hidden="true">lock</span>
+          <span>OPENING SAVED</span>
+        </span>
+      </div>
+
+      <!-- Opening / Closing Segmented Switcher -->
+      <div class="grid grid-cols-2 gap-1.5 p-1 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full" role="tablist" aria-label="Way Bill Stage">
+        <a href="../soft-nb-step-2-morning-opening/MorningOpeningSoftNB.html" role="tab" id="tab-morning" aria-selected="false" tabindex="-1" class="min-h-10 px-2 bg-[#FFFFFF] text-[#18181B] rounded-full nb-heading text-xs font-bold uppercase inline-flex items-center justify-center gap-1.5 hover:bg-[#F6F3FF]">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">confirmation_number</span>
+          <span>Opening</span>
+        </a>
+        <button role="tab" id="tab-evening" aria-selected="true" tabindex="0" class="min-h-10 px-2 bg-[#232325] text-[#FFFFFF] rounded-full nb-heading text-xs font-bold uppercase inline-flex items-center justify-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">receipt_long</span>
+          <span>Closing</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Form Content -->
+    <main id="panel-evening" role="tabpanel" aria-labelledby="tab-evening" class="flex-1 px-4 py-5 flex flex-col gap-3.5 pb-36">
+
+      <!-- Clear 1-Line Guidance Banner -->
+      <div class="bg-[#FFA8E2] border-2 border-[#18181B] rounded-2xl px-3.5 py-2.5 flex items-start gap-2">
+        <span class="material-symbols-outlined text-[#18181B] text-[20px] shrink-0" aria-hidden="true">info</span>
+        <p class="text-xs font-bold text-[#18181B] text-pretty">
+          Opening numbers loaded. Enter only the first returned ticket number for each bundle—totals calculate automatically.
+        </p>
+      </div>
+
+      <!-- Daily Collection Summary Card -->
+      <article id="evening-summary-card" class="w-full bg-[#DDD6FE] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-3">
+        <header class="flex items-center justify-between gap-2 pb-2 border-b-2 border-[#18181B]">
+          <h2 class="nb-heading text-base font-bold uppercase text-[#18181B]">Daily Collection Summary</h2>
+          <span class="nb-mono text-xs font-bold bg-[#C8EC74] text-[#18181B] border-2 border-[#18181B] rounded-full px-2.5 py-0.5">AUTO</span>
+        </header>
+        <div class="flex flex-col gap-1.5"><div class="flex items-center justify-between"><span class="text-sm font-semibold text-[#18181B]">₹8 (100 sold)</span><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹800</span></div><div class="flex items-center justify-between"><span class="text-sm font-semibold text-[#18181B]">₹10 (238 sold)</span><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹2,380</span></div><div class="flex items-center justify-between"><span class="text-sm font-semibold text-[#18181B]">₹12 (100 sold)</span><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹1,200</span></div><div class="flex items-center justify-between"><span class="text-sm font-semibold text-[#18181B]">₹15 (29 sold)</span><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹435</span></div><div class="flex items-center justify-between"><span class="text-sm font-semibold text-[#18181B]">₹20 (0 sold)</span><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹0</span></div><div class="pt-2 mt-1 border-t-2 border-[#18181B] flex items-center justify-between"><span class="nb-heading text-base font-bold uppercase text-[#18181B]">Grand Total</span><span class="nb-mono text-2xl font-bold text-[#18181B] bg-[#C8EC74] border-2 border-[#18181B] rounded-full px-3 py-0.5 tabular-nums">₹4,815</span></div></div>
+      </article><button type="button" class="w-full text-left bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_3px_0_#18181B] px-4 py-3 flex items-center justify-between gap-2 hover:bg-[#FFF3D6]"><div class="flex items-center gap-3"><span class="nb-mono text-base font-bold text-[#5B21B6] tabular-nums">₹8</span><span class="text-sm font-bold text-[#3F3F46]">100 sold</span></div><div class="flex items-center gap-2"><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹800</span><span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">expand_more</span></div></button><article class="w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-4"><header class="flex items-center justify-between gap-2 pb-2.5 border-b-2 border-[#18181B]"><div class="flex items-center gap-2 min-w-0"><h2 class="nb-heading text-lg font-bold text-[#18181B] whitespace-nowrap">₹10 Rate</h2><span data-rate-badge class="nb-mono text-xs font-bold bg-[#C8EC74] text-[#18181B] border-2 border-[#18181B] rounded-full px-2.5 py-0.5 tabular-nums whitespace-nowrap shrink-0">₹2,380</span></div><button data-action="collapse" type="button" aria-expanded="true" aria-label="Collapse ₹10 ticket rate" class="inline-flex items-center justify-center w-10 h-10 bg-[#FFCA7A] border-2 border-[#18181B] rounded-full text-[#18181B]"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">expand_less</span></button></header><div class="flex flex-col gap-4"><div class="bg-[#F6F3FF] border-2 border-[#18181B] rounded-2xl p-3 flex flex-col gap-3"><div class="flex items-center justify-between gap-2"><div class="flex items-center gap-1.5"><span class="nb-heading text-sm font-bold uppercase text-[#18181B]">Bundle 1</span><span class="nb-mono text-[11px] font-bold uppercase px-2 py-0.5 border border-[#18181B] rounded-full text-[#18181B] bg-[#FFCA7A]">Full</span></div><span class="nb-mono text-xs font-bold text-[#3F3F46] tabular-nums">Opening: 601 – 800</span></div><button type="button" role="switch" aria-checked="false" class="w-full min-h-11 flex items-center justify-between gap-2 border-2 border-[#18181B] rounded-full px-3.5 py-2 text-[#18181B] bg-[#FFFFFF] hover:bg-[#FFF3D6]"><span class="text-xs font-bold uppercase">Mark All Sold (0 Returned)</span><span class="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border-2 border-[#18181B] bg-[#E4E4E7]" aria-hidden="true"><span class="inline-block h-4 w-4 rounded-full translate-x-0.5 bg-[#18181B]"></span></span></button><div class="grid grid-cols-2 gap-3"><label class="flex flex-col gap-1"><span class="text-xs font-bold uppercase text-[#18181B]">First returned no.</span><input type="text" inputmode="numeric" value="689" placeholder="Enter no." class="w-full min-h-12 px-3 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] tabular-nums"></label><label class="flex flex-col gap-1"><span class="text-xs font-bold uppercase text-[#18181B]">Last returned no.</span><input type="text" inputmode="numeric" value="700" placeholder="Enter no." class="w-full min-h-12 px-3 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] tabular-nums"></label></div><div class="grid grid-cols-3 gap-2 pt-2 border-t-2 border-[#18181B]"><div class="flex flex-col"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Issued</span><span data-iss class="nb-mono text-base font-bold text-[#18181B] tabular-nums">200</span></div><div class="flex flex-col"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Returned</span><span data-ret class="nb-mono text-base font-bold text-[#18181B] tabular-nums">12</span></div><div class="flex flex-col items-end"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Sold</span><span data-sold class="nb-mono text-base font-bold text-[#18181B] bg-[#C8EC74] px-2 border border-[#18181B] rounded-full tabular-nums">188</span></div></div></div><div class="bg-[#F6F3FF] border-2 border-[#18181B] rounded-2xl p-3 flex flex-col gap-3"><div class="flex items-center justify-between gap-2"><div class="flex items-center gap-1.5"><span class="nb-heading text-sm font-bold uppercase text-[#18181B]">Bundle 2</span><span class="nb-mono text-[11px] font-bold uppercase px-2 py-0.5 border border-[#18181B] rounded-full text-[#18181B] bg-[#E4E4E7]">Chhit</span></div><span class="nb-mono text-xs font-bold text-[#3F3F46] tabular-nums">Opening: 651 – 700</span></div><button type="button" role="switch" aria-checked="true" class="w-full min-h-11 flex items-center justify-between gap-2 border-2 border-[#18181B] rounded-full px-3.5 py-2 text-[#18181B] bg-[#C8EC74]"><span class="text-xs font-bold uppercase">All Sold (0 Returned)</span><span class="relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border-2 border-[#18181B] bg-[#232325]" aria-hidden="true"><span class="inline-block h-4 w-4 rounded-full translate-x-5 bg-[#C8EC74]"></span></span></button><div class="grid grid-cols-3 gap-2 pt-2 border-t-2 border-[#18181B]"><div class="flex flex-col"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Issued</span><span data-iss class="nb-mono text-base font-bold text-[#18181B] tabular-nums">50</span></div><div class="flex flex-col"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Returned</span><span data-ret class="nb-mono text-base font-bold text-[#18181B] tabular-nums">0</span></div><div class="flex flex-col items-end"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Sold</span><span data-sold class="nb-mono text-base font-bold text-[#18181B] bg-[#C8EC74] px-2 border border-[#18181B] rounded-full tabular-nums">50</span></div></div></div><footer class="pt-2 border-t-2 border-[#18181B] flex items-center justify-between gap-2"><span class="text-xs font-bold uppercase text-[#18181B]">Rate Total (238 × ₹10)</span><span class="nb-mono text-lg font-bold text-[#18181B] tabular-nums">₹2,380</span></footer></div></article><button type="button" class="w-full text-left bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_3px_0_#18181B] px-4 py-3 flex items-center justify-between gap-2 hover:bg-[#FFF3D6]"><div class="flex items-center gap-3"><span class="nb-mono text-base font-bold text-[#5B21B6] tabular-nums">₹12</span><span class="text-sm font-bold text-[#3F3F46]">100 sold</span></div><div class="flex items-center gap-2"><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹1,200</span><span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">expand_more</span></div></button><button type="button" class="w-full text-left bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_3px_0_#18181B] px-4 py-3 flex items-center justify-between gap-2 hover:bg-[#FFF3D6]"><div class="flex items-center gap-3"><span class="nb-mono text-base font-bold text-[#5B21B6] tabular-nums">₹15</span><span class="text-sm font-bold text-[#3F3F46]">29 sold</span></div><div class="flex items-center gap-2"><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹435</span><span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">expand_more</span></div></button><button type="button" class="w-full text-left bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_3px_0_#18181B] px-4 py-3 flex items-center justify-between gap-2 hover:bg-[#FFF3D6]"><div class="flex items-center gap-3"><span class="nb-mono text-base font-bold text-[#5B21B6] tabular-nums">₹20</span><span class="text-sm font-bold text-[#3F3F46]">0 sold</span></div><div class="flex items-center gap-2"><span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹0</span><span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">expand_more</span></div></button></main>
+
+    <!-- Sticky Bottom Submit CTA -->
+    <footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-30 bg-[#FAF8FF] border-t-2 border-[#18181B] rounded-t-3xl px-4 py-3 flex flex-col gap-2">
+      <div class="flex items-center justify-between gap-3">
+        <span id="evening-footer-label" class="text-xs font-bold uppercase text-[#18181B]">Grand Total (467 sold)</span>
+        <span id="evening-footer-amount" class="nb-mono text-lg font-bold text-[#18181B] tabular-nums">₹4,815</span>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <a href="../soft-nb-step-2-morning-opening/MorningOpeningSoftNB.html" class="col-span-1 inline-flex items-center justify-center min-h-12 px-3 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full shadow-[0_3px_0_#18181B] text-[#18181B] nb-heading text-sm font-bold uppercase">Back</a>
+        <a id="btn-submit-closing" href="../soft-nb-step-4-expenses/DailyExpensesSoftNB.html" class="col-span-2 inline-flex items-center justify-center gap-2 min-h-12 px-4 bg-[#232325] text-[#FFFFFF] border-2 border-[#18181B] rounded-full shadow-[0_3px_0_#18181B] nb-heading text-sm font-bold uppercase active:translate-y-[2px] active:shadow-none transition-all">
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">check_circle</span>
+          <span>Submit Closing</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'joymaa_waybill_v2';
+      var main = document.getElementById('panel-evening');
+      var summaryCard = document.getElementById('evening-summary-card');
+      var footerLabel = document.getElementById('evening-footer-label');
+      var footerAmount = document.getElementById('evening-footer-amount');
+      var submitBtn = document.getElementById('btn-submit-closing');
+      if (!main || !summaryCard) return;
+
+      var defaultRates = [
+        { id: 'r1', price: 8, bundles: [{ mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 'all_sold' }] },
+        { id: 'r2', price: 10, bundles: [
+          { mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 'all_sold' },
+          { mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 689, lastReturned: 700 },
+          { mode: 'chhit', qty: 1, perBundle: 50, first: 651, last: 700, firstReturned: 'all_returned' }
+        ] },
+        { id: 'r3', price: 12, bundles: [{ mode: 'full', qty: 1, perBundle: 100, first: 601, last: 700, firstReturned: 'all_sold' }] },
+        { id: 'r4', price: 15, bundles: [{ mode: 'chhit', qty: 1, perBundle: 50, first: 650, last: 700, firstReturned: 679 }] },
+        { id: 'r5', price: 20, bundles: [{ mode: 'chhit', qty: 1, perBundle: 50, first: 650, last: 700, firstReturned: 671 }] }
+      ];
+
+      function loadState() {
+        try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; }
+      }
+
+      var st = loadState();
+      var rates = Array.isArray(st.rates) && st.rates.length ? st.rates : JSON.parse(JSON.stringify(defaultRates));
+      (function () {
+        var changed = false;
+        rates.forEach(function (r) {
+          var nextBundles = [];
+          (r.bundles || []).forEach(function (b) {
+            if (b.mode === 'full' && (parseInt(b.qty, 10) || 1) > 1) {
+              var count = parseInt(b.qty, 10) || 1;
+              for (var i = 0; i < count; i++) {
+                nextBundles.push({
+                  mode: 'full',
+                  qty: 1,
+                  perBundle: parseInt(b.perBundle, 10) || 100,
+                  first: 601,
+                  last: 700,
+                  firstReturned: i === 0 ? 'all_sold' : (b.firstReturned || 'all_sold'),
+                  lastReturned: i === 0 ? '' : (b.lastReturned || '')
+                });
+              }
+              changed = true;
+            } else {
+              nextBundles.push(b);
+            }
+          });
+          r.bundles = nextBundles;
+        });
+        if (changed) {
+          st.rates = rates;
+          try { localStorage.setItem(KEY, JSON.stringify(st)); } catch (e) {}
+        }
+      })();
+      var activeId = rates[1] ? rates[1].id : (rates[0] ? rates[0].id : null);
+
+      function fmtINR(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+
+      function bundleCalc(b) {
+        var issued = b.mode === 'chhit'
+          ? ((parseInt(b.last, 10) || 0) >= (parseInt(b.first, 10) || 0) && (parseInt(b.first, 10) || 0) > 0
+              ? (parseInt(b.last, 10) - parseInt(b.first, 10) + 1) : 0)
+          : (parseInt(b.perBundle, 10) || 0);
+        var first = parseInt(b.first, 10) || 601;
+        var last = b.mode === 'chhit' ? (parseInt(b.last, 10) || (first + issued - 1)) : (first + issued - 1);
+        var effectiveLast = b.mode === 'full'
+          ? ((b.lastReturned !== '' && b.lastReturned !== null && typeof b.lastReturned !== 'undefined') ? parseInt(b.lastReturned, 10) : '')
+          : last;
+        var returned = 0;
+        if (b.firstReturned === 'all_returned') {
+          returned = issued;
+        } else if (b.firstReturned !== 'all_sold' && b.firstReturned !== '' && b.firstReturned !== null && typeof b.firstReturned !== 'undefined') {
+          var fr = parseInt(b.firstReturned, 10);
+          var el = typeof effectiveLast === 'number' ? effectiveLast : parseInt(effectiveLast, 10);
+          if (!isNaN(fr) && !isNaN(el) && el >= fr && issued > 0) returned = Math.max(0, Math.min(issued, el - fr + 1));
+        }
+        return { issued: issued, returned: returned, sold: Math.max(0, issued - returned), first: first, last: last, effectiveLast: (effectiveLast !== '' && !isNaN(effectiveLast)) ? effectiveLast : '' };
+      }
+
+      function rateCalc(r) {
+        var iss = 0, ret = 0, sold = 0;
+        r.bundles.forEach(function (b) { var c = bundleCalc(b); iss += c.issued; ret += c.returned; sold += c.sold; });
+        return { issued: iss, returned: ret, sold: sold, amount: sold * (parseInt(r.price, 10) || 0) };
+      }
+
+      function saveClosing() {
+        var cur = loadState();
+        cur.rates = rates;
+        var totalSold = 0, grandTotal = 0;
+        rates.forEach(function (r) { var rc = rateCalc(r); totalSold += rc.sold; grandTotal += rc.amount; });
+        cur.closing = { totalSold: totalSold, grandTotal: grandTotal };
+        try { localStorage.setItem(KEY, JSON.stringify(cur)); } catch (e) {}
+      }
+
+      function updateSummaryAndFooter() {
+        var totalSold = 0, grandTotal = 0;
+        var listContainer = summaryCard.querySelector('.flex.flex-col.gap-1\\.5');
+        if (listContainer) listContainer.innerHTML = '';
+
+        rates.forEach(function (r) {
+          var rc = rateCalc(r);
+          totalSold += rc.sold;
+          grandTotal += rc.amount;
+          if (listContainer) {
+            var row = document.createElement('div');
+            row.className = 'flex items-center justify-between';
+            row.innerHTML =
+              '<span class="text-sm font-semibold text-[#18181B]">₹' + r.price + ' (' + rc.sold + ' sold)</span>' +
+              '<span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">' + fmtINR(rc.amount) + '</span>';
+            listContainer.appendChild(row);
+          }
+        });
+
+        if (listContainer) {
+          var totalRow = document.createElement('div');
+          totalRow.className = 'pt-2 mt-1 border-t-2 border-[#18181B] flex items-center justify-between';
+          totalRow.innerHTML =
+            '<span class="nb-heading text-base font-bold uppercase text-[#18181B]">Grand Total</span>' +
+            '<span class="nb-mono text-2xl font-bold text-[#18181B] bg-[#C8EC74] border-2 border-[#18181B] rounded-full px-3 py-0.5 tabular-nums">' + fmtINR(grandTotal) + '</span>';
+          listContainer.appendChild(totalRow);
+        }
+
+        if (footerLabel) footerLabel.textContent = 'Grand Total (' + totalSold + ' sold)';
+        if (footerAmount) footerAmount.textContent = fmtINR(grandTotal);
+        saveClosing();
+      }
+
+      function render() {
+        while (summaryCard.nextSibling) { main.removeChild(summaryCard.nextSibling); }
+
+        rates.forEach(function (rate) {
+          var rc = rateCalc(rate);
+          if (rate.id !== activeId) {
+            var row = document.createElement('button');
+            row.type = 'button';
+            row.className = 'w-full text-left bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_3px_0_#18181B] px-4 py-3 flex items-center justify-between gap-2 hover:bg-[#FFF3D6]';
+            row.innerHTML =
+              '<div class="flex items-center gap-3">' +
+                '<span class="nb-mono text-base font-bold text-[#5B21B6] tabular-nums">₹' + rate.price + '</span>' +
+                '<span class="text-sm font-bold text-[#3F3F46]">' + rc.sold + ' sold</span>' +
+              '</div>' +
+              '<div class="flex items-center gap-2">' +
+                '<span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">' + fmtINR(rc.amount) + '</span>' +
+                '<span class="material-symbols-outlined text-[#18181B] text-[20px]" aria-hidden="true">expand_more</span>' +
+              '</div>';
+            row.addEventListener('click', function () { activeId = rate.id; render(); });
+            main.appendChild(row);
+            return;
+          }
+
+          var card = document.createElement('article');
+          card.className = 'w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-4';
+
+          var hdr = document.createElement('header');
+          hdr.className = 'flex items-center justify-between gap-2 pb-2.5 border-b-2 border-[#18181B]';
+          hdr.innerHTML =
+            '<div class="flex items-center gap-2 min-w-0">' +
+              '<h2 class="nb-heading text-lg font-bold text-[#18181B] whitespace-nowrap">₹' + rate.price + ' Rate</h2>' +
+              '<span data-rate-badge class="nb-mono text-xs font-bold bg-[#C8EC74] text-[#18181B] border-2 border-[#18181B] rounded-full px-2.5 py-0.5 tabular-nums whitespace-nowrap shrink-0">' + fmtINR(rc.amount) + '</span>' +
+            '</div>' +
+            '<button data-action="collapse" type="button" aria-expanded="true" aria-label="Collapse ₹' + rate.price + ' ticket rate" class="inline-flex items-center justify-center w-10 h-10 bg-[#FFCA7A] border-2 border-[#18181B] rounded-full text-[#18181B]"><span class="material-symbols-outlined text-[22px]" aria-hidden="true">expand_less</span></button>';
+
+          var rateBadge = hdr.querySelector('[data-rate-badge]');
+          hdr.querySelector('[data-action="collapse"]').addEventListener('click', function () { activeId = null; render(); });
+          card.appendChild(hdr);
+
+          var body = document.createElement('div');
+          body.className = 'flex flex-col gap-4';
+
+          var rateFooterLabel = document.createElement('span');
+          rateFooterLabel.className = 'text-xs font-bold uppercase text-[#18181B]';
+          var rateFooterAmt = document.createElement('span');
+          rateFooterAmt.className = 'nb-mono text-lg font-bold text-[#18181B] tabular-nums';
+
+          function syncRateTotals() {
+            var updated = rateCalc(rate);
+            rateBadge.textContent = fmtINR(updated.amount);
+            rateFooterLabel.textContent = 'Rate Total (' + updated.sold + ' × ₹' + rate.price + ')';
+            rateFooterAmt.textContent = fmtINR(updated.amount);
+            updateSummaryAndFooter();
+          }
+
+          rate.bundles.forEach(function (b, idx) {
+            var c = bundleCalc(b);
+            var isAllSold = b.firstReturned === 'all_sold';
+            var isAllReturned = b.firstReturned === 'all_returned';
+            var isPartial = !isAllSold && !isAllReturned;
+            var isFull = b.mode === 'full';
+            var openingText = isFull ? ('Opening: ' + c.issued + ' tickets') : ('Opening: ' + c.first + ' – ' + c.last);
+            var bDiv = document.createElement('div');
+            bDiv.className = 'bg-[#F6F3FF] border-2 border-[#18181B] rounded-2xl p-3 flex flex-col gap-3';
+            bDiv.innerHTML =
+              '<div class="flex items-center justify-between gap-2">' +
+                '<div class="flex items-center gap-1.5">' +
+                  '<span class="nb-heading text-sm font-bold uppercase text-[#18181B]">Bundle ' + (idx + 1) + '</span>' +
+                  '<span class="nb-mono text-[11px] font-bold uppercase px-2 py-0.5 border border-[#18181B] rounded-full text-[#18181B] ' + (isFull ? 'bg-[#FFCA7A]' : 'bg-[#E4E4E7]') + '">' + (isFull ? 'Full' : 'Chhit') + '</span>' +
+                '</div>' +
+                '<span class="nb-mono text-xs font-bold text-[#3F3F46] tabular-nums">' + openingText + '</span>' +
+              '</div>';
+
+            var statusBar = document.createElement('div');
+            statusBar.setAttribute('role', 'group');
+            statusBar.setAttribute('aria-label', 'Bundle ' + (idx + 1) + ' closing status');
+            statusBar.className = 'grid grid-cols-3 gap-1 p-1 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full';
+            statusBar.innerHTML =
+              '<button data-status="all_sold" type="button" aria-pressed="' + isAllSold + '" class="min-h-10 rounded-full nb-heading text-[11px] font-bold uppercase whitespace-nowrap ' + (isAllSold ? 'bg-[#C8EC74] text-[#18181B] border border-[#18181B]' : 'bg-[#FFFFFF] text-[#18181B]') + '">All Sold</button>' +
+              '<button data-status="all_returned" type="button" aria-pressed="' + isAllReturned + '" class="min-h-10 rounded-full nb-heading text-[11px] font-bold uppercase whitespace-nowrap ' + (isAllReturned ? 'bg-[#FFA8E2] text-[#18181B] border border-[#18181B]' : 'bg-[#FFFFFF] text-[#18181B]') + '">Unsold</button>' +
+              '<button data-status="partial" type="button" aria-pressed="' + isPartial + '" class="min-h-10 rounded-full nb-heading text-[11px] font-bold uppercase whitespace-nowrap ' + (isPartial ? 'bg-[#232325] text-[#FFFFFF]' : 'bg-[#FFFFFF] text-[#18181B]') + '">Partial</button>';
+
+            statusBar.querySelector('[data-status="all_sold"]').addEventListener('click', function () {
+              b.firstReturned = 'all_sold';
+              render();
+            });
+            statusBar.querySelector('[data-status="all_returned"]').addEventListener('click', function () {
+              b.firstReturned = 'all_returned';
+              render();
+            });
+            statusBar.querySelector('[data-status="partial"]').addEventListener('click', function () {
+              if (b.firstReturned === 'all_sold' || b.firstReturned === 'all_returned') b.firstReturned = '';
+              if (isFull && (b.lastReturned === '' || b.lastReturned === null || typeof b.lastReturned === 'undefined')) b.lastReturned = '';
+              render();
+            });
+            bDiv.appendChild(statusBar);
+
+            if (isPartial) {
+              var grid = document.createElement('div');
+              grid.className = 'grid grid-cols-2 gap-3';
+
+              var fWrap = document.createElement('label');
+              fWrap.className = 'flex flex-col gap-1';
+              fWrap.innerHTML = '<span class="text-xs font-bold uppercase text-[#18181B]">First returned no.</span>';
+              var fIn = document.createElement('input');
+              fIn.type = 'text'; fIn.inputMode = 'numeric'; fIn.value = b.firstReturned || ''; fIn.placeholder = 'Enter no.';
+              fIn.className = 'w-full min-h-12 px-3 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] tabular-nums';
+              fWrap.appendChild(fIn);
+
+              var lWrap = document.createElement('label');
+              lWrap.className = 'flex flex-col gap-1';
+              lWrap.innerHTML = '<span class="text-xs font-bold uppercase ' + (isFull ? 'text-[#18181B]' : 'text-[#3F3F46]') + '">' + (isFull ? 'Last returned no.' : 'Last returned (fixed)') + '</span>';
+              var lIn = document.createElement('input');
+              lIn.type = 'text';
+              if (isFull) {
+                lIn.inputMode = 'numeric'; lIn.value = c.effectiveLast; lIn.placeholder = 'Enter no.';
+                lIn.className = 'w-full min-h-12 px-3 bg-[#FFFFFF] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] tabular-nums';
+              } else {
+                lIn.readOnly = true; lIn.value = c.last;
+                lIn.className = 'w-full min-h-12 px-3 bg-[#E4E4E7] border-2 border-[#18181B] rounded-2xl nb-mono text-base font-bold text-[#18181B] tabular-nums cursor-default';
+              }
+              lWrap.appendChild(lIn);
+
+              grid.appendChild(fWrap);
+              grid.appendChild(lWrap);
+              bDiv.appendChild(grid);
+
+              function onRetInput() {
+                var rawF = fIn.value.replace(/[^\d]/g, '');
+                b.firstReturned = rawF ? parseInt(rawF, 10) : '';
+                if (isFull) {
+                  var rawL = lIn.value.replace(/[^\d]/g, '');
+                  b.lastReturned = rawL ? parseInt(rawL, 10) : '';
+                }
+                var nc = bundleCalc(b);
+                issVal.textContent = nc.issued;
+                retVal.textContent = nc.returned;
+                soldVal.textContent = nc.sold;
+                syncRateTotals();
+              }
+              fIn.addEventListener('input', onRetInput);
+              if (isFull) lIn.addEventListener('input', onRetInput);
+            }
+
+            var stats = document.createElement('div');
+            stats.className = 'grid grid-cols-3 gap-2 pt-2 border-t-2 border-[#18181B]';
+            stats.innerHTML =
+              '<div class="flex flex-col"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Issued</span><span data-iss class="nb-mono text-base font-bold text-[#18181B] tabular-nums">' + c.issued + '</span></div>' +
+              '<div class="flex flex-col"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Returned</span><span data-ret class="nb-mono text-base font-bold text-[#18181B] tabular-nums">' + c.returned + '</span></div>' +
+              '<div class="flex flex-col items-end"><span class="text-[11px] font-bold uppercase text-[#3F3F46]">Sold</span><span data-sold class="nb-mono text-base font-bold text-[#18181B] bg-[#C8EC74] px-2 border border-[#18181B] rounded-full tabular-nums">' + c.sold + '</span></div>';
+
+            var issVal = stats.querySelector('[data-iss]');
+            var retVal = stats.querySelector('[data-ret]');
+            var soldVal = stats.querySelector('[data-sold]');
+            bDiv.appendChild(stats);
+            body.appendChild(bDiv);
+          });
+
+          var cardFooter = document.createElement('footer');
+          cardFooter.className = 'pt-2 border-t-2 border-[#18181B] flex items-center justify-between gap-2';
+          cardFooter.appendChild(rateFooterLabel);
+          cardFooter.appendChild(rateFooterAmt);
+          body.appendChild(cardFooter);
+
+          card.appendChild(body);
+          main.appendChild(card);
+          syncRateTotals();
+        });
+
+        updateSummaryAndFooter();
+      }
+
+      if (submitBtn) submitBtn.addEventListener('click', saveClosing);
+
+      render();
+    })();
+  </script>
+
+
+<grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration></body></html>

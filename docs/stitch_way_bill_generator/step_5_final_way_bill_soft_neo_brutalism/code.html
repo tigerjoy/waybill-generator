@@ -1,0 +1,457 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 5 — Final Way Bill (Soft Neo-Brutalism)</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00236F',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A8A',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#AC3400',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#FFDBD0',
+        'light-on-secondary-container': '#5D1800',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#FAF7F2',
+        'light-on-background': '#1A1B21',
+        'light-surface': '#FAF7F2',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3EFE6',
+        'light-surface-container': '#EBE6DC',
+        'light-surface-container-high': '#E3DDD2',
+        'light-on-surface': '#1A1B21',
+        'light-on-surface-variant': '#444651',
+        'light-outline': '#757682',
+        'light-outline-variant': '#D5CFC4',
+        'dark-primary': '#B6C4FF',
+        'dark-on-primary': '#05297A',
+        'dark-primary-container': '#1E3A8A',
+        'dark-on-primary-container': '#DCE1FF',
+        'dark-secondary': '#FFB59D',
+        'dark-on-secondary': '#5D1800',
+        'dark-secondary-container': '#B43700',
+        'dark-on-secondary-container': '#FFDBD0',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121318',
+        'dark-on-background': '#E3E1E9',
+        'dark-surface': '#121318',
+        'dark-surface-container-lowest': '#0D0E13',
+        'dark-surface-container-low': '#1A1B21',
+        'dark-surface-container': '#1E1F25',
+        'dark-surface-container-high': '#292A2F',
+        'dark-on-surface': '#E3E1E9',
+        'dark-on-surface-variant': '#C5C5D3',
+        'dark-outline': '#8F909D',
+        'dark-outline-variant': '#444651',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'body': ['"Open Sans"', 'sans-serif'],
+        'label': ['"Open Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'mono-lg': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Open+Sans:wght@600;700&amp;family=Source+Code+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>
+    body { font-family: 'Open Sans', sans-serif; }
+    .nb-heading { font-family: 'Space Grotesk', sans-serif; }
+    .nb-mono { font-family: 'Source Code Pro', monospace; }
+    .material-symbols-outlined { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }
+  </style>
+</head>
+<body class="bg-[#F6F3FF] text-[#18181B] antialiased">
+  <div class="min-h-[884px] w-full max-w-md mx-auto flex flex-col justify-between bg-[#F6F3FF]" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Stepper Header -->
+    <header class="sticky top-0 z-20 bg-[#FFCA7A] border-b-2 border-[#18181B] rounded-b-3xl px-4 pt-4 pb-4 flex flex-col gap-3">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex flex-col">
+          <span class="nb-heading text-xs font-bold tracking-widest uppercase text-[#18181B]">JOY MAA TRAVELS</span>
+          <h1 class="nb-heading text-2xl font-bold text-[#18181B] leading-tight">Final Way Bill</h1>
+        </div>
+        <span class="nb-mono text-xs font-bold px-3 py-1 bg-[#C8EC74] text-[#18181B] border-2 border-[#18181B] rounded-full shadow-[0_2px_0_#18181B] tabular-nums">STEP 5/5</span>
+      </div>
+
+      <!-- 5-Step Progress Bar (All Complete) -->
+      <nav class="grid grid-cols-5 gap-1.5" aria-label="Step 5 of 5 complete">
+        <a href="../soft-nb-step-1-trip-details/TripDetailsSoftNB.html" aria-label="Step 1: Bus &amp; Trip Details" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/80 tabular-nums">1</span></a>
+        <a href="../soft-nb-step-2-morning-opening/MorningOpeningSoftNB.html" aria-label="Step 2: Morning Opening" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/80 tabular-nums">2</span></a>
+        <a href="../soft-nb-step-3-evening-closing/EveningClosingSoftNB.html" aria-label="Step 3: Evening Closing" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/80 tabular-nums">3</span></a>
+        <a href="../soft-nb-step-4-expenses/DailyExpensesSoftNB.html" aria-label="Step 4: Daily Expenses" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B]/80 tabular-nums">4</span></a>
+        <a href="../soft-nb-step-5-final-waybill/FinalWayBillSoftNB.html" aria-label="Step 5: Final Way Bill" aria-current="step" class="block py-1 -my-1 cursor-pointer"><div class="h-2.5 bg-[#232325] border border-[#18181B] rounded-full"></div><span class="mt-1 block text-center nb-mono text-[10px] leading-none font-bold text-[#18181B] tabular-nums">5</span></a>
+      </nav>
+    </header>
+
+    <!-- Main Paper-Style Way Bill Sheet -->
+    <main class="flex-1 px-4 py-5 flex flex-col gap-5 pb-32">
+
+      <!-- Traditional Paper Header Block -->
+      <article class="w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-3">
+        <div class="text-center border-b-2 border-[#18181B] pb-2 flex flex-col">
+          <span class="nb-heading text-lg font-bold text-[#18181B] tracking-wide uppercase">JOY GURU / JOY MAA TRAVELS</span>
+          <span class="nb-mono text-xs font-bold text-[#3F3F46]">DAILY WAY BILL RECORD</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="flex flex-col">
+            <span class="text-[11px] font-bold uppercase text-[#3F3F46]">Date</span>
+            <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">24 Nov 2026</span>
+          </div>
+          <div class="flex flex-col items-end">
+            <span class="text-[11px] font-bold uppercase text-[#3F3F46]">Bus No.</span>
+            <span class="nb-mono text-sm font-bold text-[#18181B]">WB 07 J 4625</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[11px] font-bold uppercase text-[#3F3F46]">Driver</span>
+            <span class="text-sm font-bold text-[#18181B]">Ramesh Mondal</span>
+          </div>
+          <div class="flex flex-col items-end">
+            <span class="text-[11px] font-bold uppercase text-[#3F3F46]">Conductor</span>
+            <span class="text-sm font-bold text-[#18181B]">Suman Das</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[11px] font-bold uppercase text-[#3F3F46]">Trips</span>
+            <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">3.5</span>
+          </div>
+          <div class="flex flex-col items-end">
+            <span class="text-[11px] font-bold uppercase text-[#3F3F46]">Bag Money (Ref)</span>
+            <span class="nb-mono text-sm font-bold text-[#3F3F46] tabular-nums">₹500</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ticket Sales Table -->
+      <article class="w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-3">
+        <header class="flex items-center justify-between pb-2 border-b-2 border-[#18181B]">
+          <h2 class="nb-heading text-base font-bold uppercase text-[#18181B]">Ticket Sales</h2>
+          <span class="nb-mono text-xs font-bold bg-[#FFCA7A] border border-[#18181B] rounded-full px-2.5 py-0.5 text-[#18181B] tabular-nums">119 sold</span>
+        </header>
+
+        <div class="grid grid-cols-4 gap-1 pb-1 border-b-2 border-[#18181B]">
+          <span class="text-xs font-bold uppercase text-[#3F3F46]">Rate</span>
+          <span class="text-xs font-bold uppercase text-[#3F3F46] text-right">Iss</span>
+          <span class="text-xs font-bold uppercase text-[#3F3F46] text-right">Ret</span>
+          <span class="text-xs font-bold uppercase text-[#3F3F46] text-right">Amount</span>
+        </div>
+
+        <div class="grid grid-cols-4 gap-1 items-center">
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹10</span>
+          <span class="nb-mono text-sm font-semibold text-[#3F3F46] text-right tabular-nums">150</span>
+          <span class="nb-mono text-sm font-semibold text-[#3F3F46] text-right tabular-nums">59</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] text-right tabular-nums">₹910</span>
+        </div>
+
+        <div class="grid grid-cols-4 gap-1 items-center">
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹15</span>
+          <span class="nb-mono text-sm font-semibold text-[#3F3F46] text-right tabular-nums">50</span>
+          <span class="nb-mono text-sm font-semibold text-[#3F3F46] text-right tabular-nums">22</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] text-right tabular-nums">₹420</span>
+        </div>
+
+        <footer class="pt-2 border-t-2 border-[#18181B] flex items-center justify-between">
+          <span class="nb-heading text-sm font-bold uppercase text-[#18181B]">TOTAL SALE</span>
+          <span class="nb-mono text-lg font-bold text-[#18181B] bg-[#C8EC74] border border-[#18181B] rounded-full px-3 tabular-nums">₹1,330</span>
+        </footer>
+      </article>
+
+      <!-- Expenses Table -->
+      <article class="w-full bg-[#FFFFFF] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-2">
+        <header class="pb-2 border-b-2 border-[#18181B]">
+          <h2 class="nb-heading text-base font-bold uppercase text-[#18181B]">Expenses &amp; Staff Pay</h2>
+        </header>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Driver&#39;s Pay (13%)</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹173</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Conductor&#39;s Pay (10%)</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹133</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Diesel</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹450</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Pujo</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹0</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Petty (Starter)</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹40</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Syndicate Fund</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹30</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Toll Tax</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹60</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Late Fine</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹0</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Tyre Work</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹0</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-[#3F3F46]">Mobil</span>
+          <span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹0</span>
+        </div>
+        <footer class="pt-2 border-t-2 border-[#18181B] flex items-center justify-between">
+          <span class="nb-heading text-sm font-bold uppercase text-[#18181B]">TOTAL EXPENSES</span>
+          <span class="nb-mono text-lg font-bold text-[#B91C1C] tabular-nums">₹886</span>
+        </footer>
+      </article>
+
+      <!-- Final Settlement Box -->
+      <article class="w-full bg-[#C8EC74] border-2 border-[#18181B] rounded-3xl shadow-[0_4px_0_#18181B] p-4 flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase text-[#18181B]">Total Sale − Expenses</span>
+          <span class="nb-mono text-xs font-bold text-[#18181B] tabular-nums">₹1,330 − ₹886</span>
+        </div>
+        <div class="flex items-center justify-between pt-2 border-t-2 border-[#18181B]">
+          <span class="nb-heading text-base font-bold uppercase text-[#18181B]">Cash in Hand (Malik)</span>
+          <span class="nb-mono text-3xl font-bold text-[#18181B] tabular-nums">₹444</span>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Sticky Bottom Action Bar -->
+    <footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-30 bg-[#FAF8FF] border-t-2 border-[#18181B] rounded-t-3xl px-4 py-3 grid grid-cols-3 gap-2">
+      <a href="../soft-nb-step-4-expenses/DailyExpensesSoftNB.html" class="inline-flex items-center justify-center gap-1 min-h-12 px-2 bg-[#FFFFFF] border-2 border-[#18181B] rounded-full shadow-[0_3px_0_#18181B] text-[#18181B] nb-heading text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">edit</span>
+        <span>Edit</span>
+      </a>
+      <button id="btn-share-wb" type="button" class="inline-flex items-center justify-center gap-1 min-h-12 px-2 bg-[#FFCA7A] border-2 border-[#18181B] rounded-full shadow-[0_3px_0_#18181B] text-[#18181B] nb-heading text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">share</span>
+        <span>Share</span>
+      </button>
+      <a href="../soft-nb-step-1-trip-details/TripDetailsSoftNB.html" class="inline-flex items-center justify-center gap-1 min-h-12 px-2 bg-[#232325] text-[#FFFFFF] border-2 border-[#18181B] rounded-full shadow-[0_3px_0_#18181B] nb-heading text-xs font-bold uppercase">
+        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check_circle</span>
+        <span>Done</span>
+      </a>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'joymaa_waybill_v2';
+      function loadState() {
+        try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; }
+      }
+      function fmtINR(n) {
+        var neg = n < 0;
+        return (neg ? '−₹' : '₹') + Math.abs(Math.round(n)).toLocaleString('en-IN');
+      }
+
+      var st = loadState();
+      var cards = document.querySelectorAll('main > article');
+      var infoCard = cards[0];
+      var salesCard = cards[1];
+      var expCard = cards[2];
+      var settleCard = cards[3];
+
+      if (infoCard && st.trip) {
+        var vals = infoCard.querySelectorAll('.grid > div > span:last-child');
+        if (vals[0] && st.trip.date) vals[0].textContent = st.trip.date.replace(/^[A-Za-z]+,\s*/, '');
+        if (vals[1] && st.trip.busNo) vals[1].textContent = st.trip.busNo;
+        if (vals[2] && st.trip.driverName) vals[2].textContent = st.trip.driverName;
+        if (vals[3] && st.trip.conductorName) vals[3].textContent = st.trip.conductorName;
+        if (vals[5] && st.trip.bagMoney) vals[5].textContent = fmtINR(parseFloat(st.trip.bagMoney) || 0);
+      }
+      if (infoCard && st.expenses && st.expenses.tripNo !== undefined) {
+        var vals2 = infoCard.querySelectorAll('.grid > div > span:last-child');
+        if (vals2[4]) vals2[4].textContent = st.expenses.tripNo;
+      }
+
+      var totalSale = 1330;
+      if (salesCard && Array.isArray(st.rates) && st.rates.length) {
+        var totalSold = 0;
+        totalSale = 0;
+        var existingRows = Array.prototype.slice.call(salesCard.querySelectorAll(':scope > div.grid.items-center'));
+        existingRows.forEach(function (r) { r.remove(); });
+        var footerEl = salesCard.querySelector('footer');
+
+        st.rates.forEach(function (r) {
+          var iss = 0, ret = 0;
+          r.bundles.forEach(function (b) {
+            var bIss = b.mode === 'chhit'
+              ? ((parseInt(b.last, 10) || 0) >= (parseInt(b.first, 10) || 0) && (parseInt(b.first, 10) || 0) > 0
+                  ? (parseInt(b.last, 10) - parseInt(b.first, 10) + 1) : 0)
+              : (parseInt(b.perBundle, 10) || 0);
+            var first = parseInt(b.first, 10) || 601;
+            var last = b.mode === 'chhit' ? (parseInt(b.last, 10) || (first + bIss - 1)) : (first + bIss - 1);
+            var effectiveLast = b.mode === 'full'
+              ? ((b.lastReturned !== '' && b.lastReturned !== null && typeof b.lastReturned !== 'undefined') ? parseInt(b.lastReturned, 10) : last)
+              : last;
+            var bRet = 0;
+            if (b.firstReturned === 'all_returned') {
+              bRet = bIss;
+            } else if (b.firstReturned !== 'all_sold' && b.firstReturned !== '' && b.firstReturned !== null && typeof b.firstReturned !== 'undefined') {
+              var fr = parseInt(b.firstReturned, 10);
+              if (!isNaN(fr) && !isNaN(effectiveLast) && effectiveLast >= fr && bIss > 0) bRet = Math.max(0, Math.min(bIss, effectiveLast - fr + 1));
+            }
+            iss += bIss; ret += bRet;
+          });
+          var sold = Math.max(0, iss - ret);
+          var amt = sold * (parseInt(r.price, 10) || 0);
+          totalSold += sold;
+          totalSale += amt;
+
+          var row = document.createElement('div');
+          row.className = 'grid grid-cols-4 gap-1 items-center';
+          row.innerHTML =
+            '<span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">₹' + r.price + '</span>' +
+            '<span class="nb-mono text-sm font-semibold text-[#3F3F46] text-right tabular-nums">' + iss + '</span>' +
+            '<span class="nb-mono text-sm font-semibold text-[#3F3F46] text-right tabular-nums">' + ret + '</span>' +
+            '<span class="nb-mono text-sm font-bold text-[#18181B] text-right tabular-nums">' + fmtINR(amt) + '</span>';
+          salesCard.insertBefore(row, footerEl);
+        });
+
+        var soldBadge = salesCard.querySelector('header span');
+        if (soldBadge) soldBadge.textContent = totalSold + ' sold';
+        var saleTotalEl = footerEl ? footerEl.querySelector('span:last-child') : null;
+        if (saleTotalEl) saleTotalEl.textContent = fmtINR(totalSale);
+      } else if (st.closing && typeof st.closing.grandTotal === 'number') {
+        totalSale = st.closing.grandTotal;
+      }
+
+      var totalExpenses = 886;
+      if (expCard && st.expenses) {
+        var exp = st.expenses;
+        totalExpenses = typeof exp.totalExpenses === 'number' ? exp.totalExpenses : totalExpenses;
+        var expRows = Array.prototype.slice.call(expCard.querySelectorAll(':scope > div'));
+        expRows.forEach(function (r) { r.remove(); });
+        var expFooter = expCard.querySelector('footer');
+        var items = [
+          ["Driver's Pay (" + (exp.driverPct || 13) + '%)', exp.driverPay || 0],
+          ["Conductor's Pay (" + (exp.conductorPct || 10) + '%)', exp.conductorPay || 0],
+          ['Diesel', exp.diesel || 0],
+          ['Pujo', exp.pujo || 0],
+          ['Petty (Starter)', exp.petty || 0],
+          ['Syndicate Fund', exp.syndicate || 0],
+          ['Toll Tax', exp.toll || 0],
+          ['Late Fine', exp.lateFine || 0],
+          ['Tyre Work', exp.tyreWork || 0],
+          ['Mobil', exp.mobil || 0]
+        ];
+        items.forEach(function (it) {
+          var div = document.createElement('div');
+          div.className = 'flex items-center justify-between';
+          div.innerHTML =
+            '<span class="text-sm font-semibold text-[#3F3F46]">' + it[0] + '</span>' +
+            '<span class="nb-mono text-sm font-bold text-[#18181B] tabular-nums">' + fmtINR(it[1]) + '</span>';
+          expCard.insertBefore(div, expFooter);
+        });
+        var expTotalEl = expFooter ? expFooter.querySelector('span:last-child') : null;
+        if (expTotalEl) expTotalEl.textContent = fmtINR(totalExpenses);
+      }
+
+      if (settleCard) {
+        var cashInHand = totalSale - totalExpenses;
+        var formulaEl = settleCard.querySelector('div:first-child span:last-child');
+        var cashEl = settleCard.querySelector('div:last-child span:last-child');
+        if (formulaEl) formulaEl.textContent = fmtINR(totalSale) + ' − ' + fmtINR(totalExpenses);
+        if (cashEl) cashEl.textContent = fmtINR(cashInHand);
+      }
+
+      var shareBtn = document.getElementById('btn-share-wb');
+      if (shareBtn) {
+        shareBtn.addEventListener('click', function () {
+          var bus = (st.trip && st.trip.busNo) || 'WB 07 J 4625';
+          var cash = fmtINR(totalSale - totalExpenses);
+          var text = 'Joy Maa Travels — Daily Way Bill\nBus: ' + bus + '\nTotal Sale: ' + fmtINR(totalSale) + '\nTotal Expenses: ' + fmtINR(totalExpenses) + '\nCash in Hand (Malik): ' + cash;
+          if (navigator.share) {
+            navigator.share({ title: 'Daily Way Bill', text: text }).catch(function () {});
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(text).then(function () {
+              var lbl = shareBtn.querySelector('span:last-child');
+              if (lbl) {
+                var prev = lbl.textContent;
+                lbl.textContent = 'Copied!';
+                setTimeout(function () { lbl.textContent = prev; }, 1500);
+              }
+            }).catch(function () {});
+          }
+        });
+      }
+    })();
+  </script>
+
+
+</body></html>
