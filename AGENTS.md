@@ -107,9 +107,9 @@ Keep steps small. One concept at a time. Prefer depth over speed.
   Keep fonts minimal (system fonts or self-hosted subsets).
 - **Constraints:** older mobile devices, poor connectivity → small bundles, no heavy dependencies,
   optional hand-written service worker to cache the app shell.
-- **Design spec:** `docs/lit-components-analysis.md` contains the component inventory. Treat it as
-  a requirements document, not source code to copy. Names can be adapted to Svelte conventions
-  (`App.svelte`, `lib/components/...`).
+- **Design spec:** `docs/component-breakdown.md` is the current component inventory, rebuilt
+  from the updated Stitch prototypes. Treat it as a requirements document, not source code to
+  copy. The older `docs/lit-components-analysis.md` is superseded.
 - **Svelte version:** Svelte 5 with runes (`$state`, `$derived`) is the default. If the user prefers
   legacy `let` + `$:` syntax, follow their lead and explain the difference once.
 

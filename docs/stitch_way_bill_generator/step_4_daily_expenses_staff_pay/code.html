@@ -1,0 +1,410 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Step 4 — Daily Expenses &amp; Staff Pay</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00236F',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1E3A8A',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#AC3400',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#FFDBD0',
+        'light-on-secondary-container': '#5D1800',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#FAF7F2',
+        'light-on-background': '#1A1B21',
+        'light-surface': '#FAF7F2',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3EFE6',
+        'light-surface-container': '#EBE6DC',
+        'light-surface-container-high': '#E3DDD2',
+        'light-on-surface': '#1A1B21',
+        'light-on-surface-variant': '#444651',
+        'light-outline': '#757682',
+        'light-outline-variant': '#D5CFC4',
+        'dark-primary': '#B6C4FF',
+        'dark-on-primary': '#05297A',
+        'dark-primary-container': '#1E3A8A',
+        'dark-on-primary-container': '#DCE1FF',
+        'dark-secondary': '#FFB59D',
+        'dark-on-secondary': '#5D1800',
+        'dark-secondary-container': '#B43700',
+        'dark-on-secondary-container': '#FFDBD0',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#121318',
+        'dark-on-background': '#E3E1E9',
+        'dark-surface': '#121318',
+        'dark-surface-container-lowest': '#0D0E13',
+        'dark-surface-container-low': '#1A1B21',
+        'dark-surface-container': '#1E1F25',
+        'dark-surface-container-high': '#292A2F',
+        'dark-on-surface': '#E3E1E9',
+        'dark-on-surface-variant': '#C5C5D3',
+        'dark-outline': '#8F909D',
+        'dark-outline-variant': '#444651',
+      },
+      borderRadius: {
+        'sm': '6px',
+        'DEFAULT': '10px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '16px',
+      },
+      fontFamily: {
+        'display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'headline': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'title': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'body': ['"Open Sans"', 'sans-serif'],
+        'label': ['"Open Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'label-md': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'mono-lg': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '700' }],
+        'mono-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Open+Sans:wght@400;600&amp;family=Source+Code+Pro:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[884px] w-full max-w-md mx-auto flex flex-col justify-between bg-light-surface" data-stitch-vh="min-h-[884px]===min-h-screen">
+
+    <!-- Stepper Header -->
+    <header class="sticky top-0 z-20 bg-light-surface border-b border-light-outline-variant px-page-margin pt-gutter-lg pb-gutter-md flex flex-col gap-gutter-md">
+      <div class="flex items-center justify-between gap-gutter-sm">
+        <div class="flex flex-col gap-gutter-xs">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-primary tracking-wider uppercase">JOY MAA TRAVELS</span>
+          <h1 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Daily Expenses</h1>
+        </div>
+        <span data-design-text-token="label-sm" class="font-label text-label-sm px-gutter-sm py-gutter-xs rounded-full bg-light-surface-container text-light-primary tabular-nums">Step 4 of 5</span>
+      </div>
+
+      <!-- 5-Step Progress Bar -->
+      <nav class="grid grid-cols-5 gap-gutter-xs" aria-label="Step 4 of 5 progress">
+        <a href="../step-1-trip-details/TripDetails.html" aria-label="Step 1: Bus &amp; Trip Details" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-primary"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none font-semibold text-light-primary/80 tabular-nums">1</span></a>
+        <a href="../morning-opening-v2-accordion/MorningOpeningAccordion.html" aria-label="Step 2: Morning Opening" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-primary"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none font-semibold text-light-primary/80 tabular-nums">2</span></a>
+        <a href="../evening-closing/EveningClosing.html" aria-label="Step 3: Evening Closing" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-primary"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none font-semibold text-light-primary/80 tabular-nums">3</span></a>
+        <a href="../step-4-expenses/DailyExpenses.html" aria-label="Step 4: Daily Expenses" aria-current="step" class="block py-1 -my-1 cursor-pointer"><div class="h-1.5 rounded-full bg-light-primary"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none font-bold text-light-primary tabular-nums">4</span></a>
+        <a href="../step-5-final-waybill/FinalWayBill.html" aria-label="Step 5: Final Way Bill" class="block py-1 -my-1 cursor-pointer hover:opacity-80 transition-opacity"><div class="h-1.5 rounded-full bg-light-surface-container-high"></div><span class="mt-1 block text-center font-mono text-[10px] leading-none text-light-on-surface-variant/60 tabular-nums">5</span></a>
+      </nav>
+
+      <!-- Top Context Banner: Total Sale Reference -->
+      <div class="rounded bg-success-container px-gutter-md py-gutter-sm flex items-center justify-between gap-gutter-sm">
+        <span data-design-text-token="label-md" class="font-label text-label-md text-on-success-container">Total Ticket Sale</span>
+        <span data-design-text-token="mono-md" class="font-mono text-mono-md text-on-success-container tabular-nums">₹4,735</span>
+      </div>
+    </header>
+
+    <!-- Main Form Content -->
+    <main class="flex-1 px-page-margin py-gutter-lg flex flex-col gap-gutter-lg pb-36">
+
+      <!-- Section 0: Trip Number (Cycles) -->
+      <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="w-full rounded-md bg-light-surface-container-lowest border border-light-outline-variant p-gutter-lg flex flex-col gap-gutter-md">
+        <header class="flex items-center justify-between gap-gutter-sm">
+          <h2 data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface">Trip No. (Cycles)</h2>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Steps of 0.5</span>
+        </header>
+
+        <div class="flex items-center gap-gutter-sm">
+          <button type="button" id="trip-dec" aria-label="Decrease trip number by 0.5" class="min-h-[48px] px-gutter-md rounded-md border border-light-outline-variant bg-light-surface-container-low font-mono text-mono-md text-light-on-surface hover:bg-light-surface-container transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary">
+            <span data-design-text-token="mono-md">−0.5</span>
+          </button>
+
+          <label data-component-id="input-field-text" data-component-type="input-field" data-component-variant="text" class="flex-1">
+            <span class="sr-only">Trip number</span>
+            <input id="trip-input" type="number" step="0.5" min="0" inputmode="decimal" value="3.5" placeholder="0.0" class="w-full min-h-[48px] px-gutter-md py-gutter-sm rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-lg text-center text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+
+          <button type="button" id="trip-inc" aria-label="Increase trip number by 0.5" class="min-h-[48px] px-gutter-md rounded-md border border-light-primary bg-light-surface-container-lowest font-mono text-mono-md text-light-primary hover:bg-light-surface-container-low transition-colors duration-state-change ease-state-change focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-light-primary">
+            <span data-design-text-token="mono-md">+0.5</span>
+          </button>
+        </div>
+
+        <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Tap +0.5 / −0.5 or type any number (e.g. 3.5, 4, 5).</span>
+      </article>
+
+      <!-- Section A: Staff Pay (Auto-Calculated) -->
+      <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="w-full rounded-md bg-light-surface-container-lowest border border-light-outline-variant p-gutter-lg flex flex-col gap-gutter-md">
+        <header class="flex items-center justify-between gap-gutter-sm">
+          <h2 data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface">Staff Pay</h2>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm px-gutter-sm py-gutter-xs rounded-full bg-light-surface-container text-light-on-surface-variant">Auto-calculated</span>
+        </header>
+
+        <!-- Driver Pay Row -->
+        <div class="rounded bg-light-surface-container-low border border-light-outline-variant p-gutter-md flex items-center justify-between gap-gutter-md">
+          <div class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Driver&#39;s Pay</span>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant tabular-nums">13% of ₹4,735</span>
+          </div>
+          <div class="flex items-center gap-gutter-sm">
+            <input type="text" inputmode="numeric" value="13%" aria-label="Driver pay percentage" class="w-16 min-h-[44px] px-gutter-sm rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-center text-light-on-surface tabular-nums focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+            <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums min-w-[64px] text-right">₹616</span>
+          </div>
+        </div>
+
+        <!-- Conductor Pay Row -->
+        <div class="rounded bg-light-surface-container-low border border-light-outline-variant p-gutter-md flex items-center justify-between gap-gutter-md">
+          <div class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-surface">Conductor&#39;s Pay</span>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant tabular-nums">10% of ₹4,735</span>
+          </div>
+          <div class="flex items-center gap-gutter-sm">
+            <input type="text" inputmode="numeric" value="10%" aria-label="Conductor pay percentage" class="w-16 min-h-[44px] px-gutter-sm rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-center text-light-on-surface tabular-nums focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+            <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-primary tabular-nums min-w-[64px] text-right">₹474</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Section B: Fuel & Operating Expenses -->
+      <article data-component-id="card-action" data-component-type="card" data-component-variant="action" class="w-full rounded-md bg-light-surface-container-lowest border border-light-outline-variant p-gutter-lg flex flex-col gap-gutter-md">
+        <header class="flex items-center justify-between gap-gutter-sm">
+          <h2 data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface">Fuel &amp; Road Expenses</h2>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Blank = ₹0</span>
+        </header>
+
+        <div class="grid grid-cols-2 gap-gutter-md">
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Diesel (₹)</span>
+            <input type="text" inputmode="numeric" value="450" placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Pujo (₹)</span>
+            <input type="text" inputmode="numeric" value placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Petty (Starter) (₹)</span>
+            <input type="text" inputmode="numeric" value="40" placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Syndicate Fund (₹)</span>
+            <input type="text" inputmode="numeric" value="30" placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Toll Tax (₹)</span>
+            <input type="text" inputmode="numeric" value="60" placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Late Fine (₹)</span>
+            <input type="text" inputmode="numeric" value placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Tyre Work (₹)</span>
+            <input type="text" inputmode="numeric" value placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+          <label class="flex flex-col gap-gutter-xs">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Mobil (₹)</span>
+            <input type="text" inputmode="numeric" value placeholder="0" class="w-full min-h-[48px] px-gutter-md rounded bg-light-surface-container-lowest border border-light-outline-variant font-mono text-mono-md text-light-on-surface tabular-nums placeholder:text-light-outline focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+          </label>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- Sticky Bottom Summary & Navigation -->
+    <footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md z-30 bg-light-surface-container-lowest border-t border-light-outline-variant px-page-margin py-gutter-md shadow-lg flex flex-col gap-gutter-sm">
+      <div class="flex items-center justify-between gap-gutter-md">
+        <div class="flex flex-col">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Total Expenses</span>
+          <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-secondary tabular-nums">₹1,670</span>
+        </div>
+        <div class="flex flex-col items-end">
+          <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Cash in Hand (Malik)</span>
+          <span data-design-text-token="mono-lg" class="font-mono text-mono-lg text-success tabular-nums">₹3,065</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-gutter-sm">
+        <a href="../evening-closing/EveningClosing.html" data-component-id="button-tertiary" data-component-type="button" data-component-variant="tertiary" class="col-span-1 inline-flex items-center justify-center gap-gutter-xs min-h-[48px] px-gutter-md rounded-md border border-light-outline-variant bg-light-surface-container-low text-light-on-surface font-label text-label-lg">
+          <span data-design-text-token="label-lg">Back</span>
+        </a>
+        <a href="../step-5-final-waybill/FinalWayBill.html" data-component-id="button-primary" data-component-type="button" data-component-variant="primary" class="col-span-2 inline-flex items-center justify-center gap-gutter-sm min-h-[48px] px-gutter-lg rounded-md bg-light-primary text-light-on-primary font-label text-label-lg hover:bg-light-primary-container transition-colors duration-state-change ease-state-change">
+          <span data-design-text-token="label-lg">Generate Way Bill</span>
+          <span class="material-symbols-outlined text-[20px]" aria-hidden="true">receipt_long</span>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var KEY = 'joymaa_waybill_v2';
+      var tripInput = document.getElementById('trip-input');
+      var dec = document.getElementById('trip-dec');
+      var inc = document.getElementById('trip-inc');
+
+      function loadState() {
+        try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; }
+      }
+      function fmtINR(n) {
+        var neg = n < 0;
+        return (neg ? '−₹' : '₹') + Math.abs(Math.round(n)).toLocaleString('en-IN');
+      }
+
+      var st = loadState();
+      var totalSale = (st.closing && typeof st.closing.grandTotal === 'number') ? st.closing.grandTotal : 4735;
+
+      // Locate header banner, staff pay inputs/labels, expense inputs, and footer totals
+      var saleBannerAmt = document.querySelector('header .bg-success-container span:last-child');
+      var driverPctIn = document.querySelector('input[aria-label="Driver pay percentage"]');
+      var conductorPctIn = document.querySelector('input[aria-label="Conductor pay percentage"]');
+      var driverRow = driverPctIn ? driverPctIn.closest('.rounded') : null;
+      var conductorRow = conductorPctIn ? conductorPctIn.closest('.rounded') : null;
+      var driverSub = driverRow ? driverRow.querySelector('span[data-design-text-token="label-sm"]') : null;
+      var driverAmtEl = driverRow ? driverRow.querySelector('span[data-design-text-token="mono-md"]') : null;
+      var conductorSub = conductorRow ? conductorRow.querySelector('span[data-design-text-token="label-sm"]') : null;
+      var conductorAmtEl = conductorRow ? conductorRow.querySelector('span[data-design-text-token="mono-md"]') : null;
+
+      var roadInputs = Array.prototype.slice.call(document.querySelectorAll('main article:nth-of-type(3) input'));
+      var footerTotalExp = document.querySelector('footer span.text-light-secondary');
+      var footerCashInHand = document.querySelector('footer span.text-success');
+      var genBtn = document.querySelector('footer a[data-component-id="button-primary"]');
+
+      if (st.expenses) {
+        if (tripInput && st.expenses.tripNo !== undefined) tripInput.value = st.expenses.tripNo;
+        if (driverPctIn && st.expenses.driverPct !== undefined) driverPctIn.value = st.expenses.driverPct + '%';
+        if (conductorPctIn && st.expenses.conductorPct !== undefined) conductorPctIn.value = st.expenses.conductorPct + '%';
+        var keys = ['diesel', 'pujo', 'petty', 'syndicate', 'toll', 'lateFine', 'tyreWork', 'mobil'];
+        roadInputs.forEach(function (inp, i) {
+          if (st.expenses[keys[i]] !== undefined && st.expenses[keys[i]] !== 0) {
+            inp.value = st.expenses[keys[i]];
+          } else if (st.expenses[keys[i]] === 0) {
+            inp.value = '';
+          }
+        });
+      }
+
+      function parseNum(str) {
+        var n = parseFloat(String(str || '').replace(/[^\d.]/g, ''));
+        return isNaN(n) ? 0 : n;
+      }
+
+      function recalcAndSave() {
+        if (saleBannerAmt) saleBannerAmt.textContent = fmtINR(totalSale);
+
+        var dPct = parseNum(driverPctIn ? driverPctIn.value : 13);
+        var cPct = parseNum(conductorPctIn ? conductorPctIn.value : 10);
+        var dPay = Math.round(totalSale * dPct / 100);
+        var cPay = Math.round(totalSale * cPct / 100);
+
+        if (driverSub) driverSub.textContent = dPct + '% of ' + fmtINR(totalSale);
+        if (driverAmtEl) driverAmtEl.textContent = fmtINR(dPay);
+        if (conductorSub) conductorSub.textContent = cPct + '% of ' + fmtINR(totalSale);
+        if (conductorAmtEl) conductorAmtEl.textContent = fmtINR(cPay);
+
+        var diesel = parseNum(roadInputs[0] ? roadInputs[0].value : 0);
+        var pujo = parseNum(roadInputs[1] ? roadInputs[1].value : 0);
+        var petty = parseNum(roadInputs[2] ? roadInputs[2].value : 0);
+        var syndicate = parseNum(roadInputs[3] ? roadInputs[3].value : 0);
+        var toll = parseNum(roadInputs[4] ? roadInputs[4].value : 0);
+        var lateFine = parseNum(roadInputs[5] ? roadInputs[5].value : 0);
+        var tyreWork = parseNum(roadInputs[6] ? roadInputs[6].value : 0);
+        var mobil = parseNum(roadInputs[7] ? roadInputs[7].value : 0);
+
+        var totalExpenses = dPay + cPay + diesel + pujo + petty + syndicate + toll + lateFine + tyreWork + mobil;
+        var cashInHand = totalSale - totalExpenses;
+
+        if (footerTotalExp) footerTotalExp.textContent = fmtINR(totalExpenses);
+        if (footerCashInHand) footerCashInHand.textContent = fmtINR(cashInHand);
+
+        var cur = loadState();
+        cur.expenses = {
+          tripNo: tripInput ? tripInput.value : '3.5',
+          driverPct: dPct,
+          conductorPct: cPct,
+          driverPay: dPay,
+          conductorPay: cPay,
+          diesel: diesel,
+          pujo: pujo,
+          petty: petty,
+          syndicate: syndicate,
+          toll: toll,
+          lateFine: lateFine,
+          tyreWork: tyreWork,
+          mobil: mobil,
+          totalExpenses: totalExpenses,
+          cashInHand: cashInHand
+        };
+        try { localStorage.setItem(KEY, JSON.stringify(cur)); } catch (e) {}
+      }
+
+      function stepBy(delta) {
+        if (!tripInput) return;
+        var val = parseFloat(tripInput.value) || 0;
+        var next = Math.max(0, Math.round((val + delta) * 2) / 2);
+        tripInput.value = next;
+        recalcAndSave();
+      }
+
+      if (dec) dec.addEventListener('click', function () { stepBy(-0.5); });
+      if (inc) inc.addEventListener('click', function () { stepBy(0.5); });
+      if (tripInput) tripInput.addEventListener('input', recalcAndSave);
+      if (driverPctIn) driverPctIn.addEventListener('input', recalcAndSave);
+      if (conductorPctIn) conductorPctIn.addEventListener('input', recalcAndSave);
+      roadInputs.forEach(function (inp) { inp.addEventListener('input', recalcAndSave); });
+      if (genBtn) genBtn.addEventListener('click', recalcAndSave);
+
+      recalcAndSave();
+    })();
+  </script>
+
+
+</body></html>
