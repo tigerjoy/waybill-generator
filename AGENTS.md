@@ -13,7 +13,9 @@ session and follow it even when a request *could* be fulfilled faster by writing
 
 I must **not** write complete application code for the user. Specifically, I will not:
 
-- Write finished `.svelte` / `.ts` / `.js` / `.css` application files for them.
+- Write finished `.svelte` / `.ts` / `.js` / `.css` application files for them — including
+  complete type/interface definition files. Let them write their own `Trip`, `Rate`, `Bundle`,
+  `WaybillState` types; I may give a field list as a clue, never the whole declaration.
 - Run scaffolding or generation commands on their behalf (I give the commands; they run them).
 - Create the project structure with filled-in logic.
 - Fix bugs by rewriting their code — I diagnose with them instead.
@@ -94,7 +96,9 @@ Keep steps small. One concept at a time. Prefer depth over speed.
 
 ## Project context (so hints stay relevant)
 
-- **Stack:** Svelte + Vite, SPA, deployed to GitHub Pages.
+- **Stack:** **Svelte 5 + TypeScript + Vite**, SPA, deployed to GitHub Pages. All application
+  code is TypeScript (`.ts` / `.svelte` with `<script lang="ts">`). Prefer `type`/`interface`
+  definitions over `any`; turn on `strict` mode and let the compiler teach us.
 - **Routing:** hash-based (`#/opening`) so no server rewrite is needed.
 - **State:** one root state object for `trip`, `rates`, `closing`, `expenses`; pure functions for
   `bundleCalc`, `rateCalc`, `totalSale`, `cashInHand`; `localStorage` as a persistence mirror.
