@@ -54,9 +54,10 @@ From the Tailwind config + `data-design-text-token` attributes:
 Fonts: **Plus Jakarta Sans** (headline/title), **Open Sans** (body/label),
 **Source Code Pro** (mono/numbers), Material Symbols Outlined for icons.
 
-Implementation note: ship these as CSS custom properties in compiled CSS. **Do not use the
-Tailwind CDN script** from the prototypes — it is a browser-side CSS compiler and is expensive
-on old phones and slow networks.
+Implementation note: ship these as CSS custom properties, with compiled Tailwind v3 utilities
+mapped to them in `tailwind.config.js` (Dev A-owned). **Do not use the Tailwind CDN script**
+from the prototypes — it is a browser-side CSS compiler and is expensive on old phones and
+slow networks.
 
 ---
 

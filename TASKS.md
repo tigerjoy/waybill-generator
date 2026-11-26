@@ -28,7 +28,8 @@ Additional rules:
 
 ### Frozen files (nobody edits during the screen phase)
 
-`package.json`, `vite.config.ts`, `tsconfig*.json`, `AGENTS.md`, `docs/*`, `src/main.ts`.
+`package.json`, `vite.config.ts`, `tsconfig*.json`, `AGENTS.md`, `docs/*`, `src/main.ts`,
+`tailwind.config.js`, `postcss.config.js`.
 If a change here is genuinely needed, open a note in your PR and Dev A handles it.
 
 ---
@@ -38,6 +39,7 @@ If a change here is genuinely needed, open a note in your PR and Dev A handles i
 | Area | Owner | Files (all created/edited only by this owner) |
 | --- | --- | --- |
 | Design tokens + global CSS | **Dev A** | `src/app.css`, `src/lib/styles/tokens.css` |
+| Tailwind + PostCSS config | **Dev A** | `tailwind.config.js`, `postcss.config.js` |
 | Provisional types | **Dev A** | `src/lib/types.ts` |
 | Shared UI primitives | **Dev A** | `src/lib/components/ui/*.svelte` |
 | Shell primitives | **Dev A** | `src/lib/components/shell/*.svelte` |
@@ -58,17 +60,23 @@ and only in the final integration task.
 ### CSS token names — Dev A defines these in `tokens.css`; Dev B may use them immediately
 
 ```
---wb-primary, --wb-on-primary
---wb-surface, --wb-surface-container-lowest, --wb-surface-container-low
---wb-surface-container, --wb-surface-container-high
---wb-on-surface, --wb-on-surface-variant, --wb-outline-variant
---wb-success, --wb-success-container, --wb-on-success-container
---wb-secondary, --wb-secondary-container
---wb-error, --wb-error-container
---wb-font-headline, --wb-font-body, --wb-font-mono
+--color-brand, --color-on-brand, --color-brand-soft
+--color-page, --color-surface, --color-surface-muted
+--color-surface-sunken, --color-surface-raised
+--color-ink, --color-ink-muted
+--color-border, --color-border-strong
+--color-positive, --color-positive-soft
+--color-accent, --color-accent-soft
+--color-negative, --color-negative-soft
+--font-heading, --font-body, --font-number
 ```
 
-Rule for all screens: **no hard-coded hex colours**. Use `var(--wb-*)`.
+`src/lib/styles/tokens.css` is now populated (written at the user's request). The full list
+with role comments lives there — read it rather than guessing a name.
+
+Rule for all screens: **no hard-coded hex colours**. Use the Tailwind utilities backed by
+these tokens (e.g. `bg-primary`, `text-on-surface-variant`, `border-outline-variant`).
+Dev A publishes the exact class-name mapping in the A1 PR.
 
 ### Provisional type names — Dev A owns the file; screens may define local sample data
 
@@ -87,11 +95,18 @@ no `$state` for domain data** yet. That keeps screens independent. Wiring happen
 
 ### Dev A tasks
 
-#### A1 — Design tokens and global CSS
-- **Files:** `src/app.css`, `src/lib/styles/tokens.css` (new)
-- Define every `--wb-*` variable above from `docs/component-breakdown.md` §2.
+#### A1 — Design tokens, global CSS, and Tailwind setup
+- **Files:** `src/app.css`, `src/lib/styles/tokens.css`, `tailwind.config.js`,
+  `postcss.config.js` (all new or Dev A-owned).
+- `tokens.css` is already populated with the agreed names and role comments — use it as the
+  source of truth; values are reference-only.
+- Configure Tailwind **v3**: content globs covering `./index.html` and
+  `./src/**/*.{svelte,js,ts}`; map theme colours to the CSS variables, e.g.
+  `brand: 'var(--color-brand)'`, `positive: 'var(--color-positive)'`. Add the three
+  `@tailwind` directives to `app.css`.
 - Set the body font, background, and a `.wb-mono` / `.wb-heading` utility.
-- **Done when:** a scratch element using `var(--wb-primary)` renders the right blue; no Tailwind CDN link anywhere; `npm run check` clean.
+- **Done when:** a scratch element using `bg-brand` renders the same blue as
+  `var(--color-brand)`; no Tailwind CDN `<script>` anywhere; `npm run check` clean.
 
 #### A2 — Provisional types
 - **Files:** `src/lib/types.ts` (new)
@@ -170,7 +185,8 @@ no `$state` for domain data** yet. That keeps screens independent. Wiring happen
 ## 5. Definition of done (every task)
 
 - Only files in your ownership column were changed.
-- Screen uses `var(--wb-*)` tokens; no hard-coded colours, no Tailwind CDN.
+- Screen uses compiled Tailwind utilities backed by `--color-*` / `--font-*` tokens; no hard-coded colours,
+  no Tailwind CDN script.
 - Screen is self-contained: no imports from the other developer's folders.
 - No domain state, calculations, localStorage, or legacy handling.
 - `npm run check` reports 0 errors.
@@ -194,6 +210,6 @@ These come later, each as its own single-owner task:
 
 - Did I edit `App.svelte` and I am not Dev A on task A7? → revert it.
 - Did I edit another developer's step folder? → revert it.
-- Did I edit `app.css`, `types.ts`, or a shared component and I am not Dev A? → revert it.
+- Did I edit `app.css`, `types.ts`, Tailwind config, or a shared component and I am not Dev A? → revert it.
 - Am I committing a barrel file or a reformat of someone else's code? → don't.
 - Did I run `npm run check`? → if not, do it now.

@@ -13,8 +13,11 @@
     "@sveltejs/vite-plugin-svelte": "^7.3.1",
     "@tsconfig/svelte": "^5.0.8",
     "@types/node": "^24.19.2",
+    "autoprefixer": "^10.7.0",
+    "postcss": "^8.5.33",
     "svelte": "^5.57.3",
     "svelte-check": "^4.7.7",
+    "tailwindcss": "^3.4.19",
     "typescript": "~6.0.3",
     "vite": "^8.3.6"
   }

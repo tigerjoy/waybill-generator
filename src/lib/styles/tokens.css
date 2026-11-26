@@ -1,0 +1,57 @@
+/*
+ * Waybill design tokens
+ * ---------------------------------------------------------------
+ * Semantic role names, not value names (no --blue). If the brand
+ * colour changes later, we change one value here and every consumer
+ * follows. The hex values are taken from the Stitch prototypes as
+ * REFERENCE ONLY — they are not a contract.
+ *
+ * Naming rules:
+ *   --color-<role>          a colour role
+ *   --color-on-<role>       foreground that sits on that role
+ *   --color-<role>-soft     tinted / container background
+ *   --font-<role>           font stack
+ *
+ * Tailwind's theme keys mirror these names, e.g.
+ *   brand: 'var(--color-brand)'  →  class `bg-brand`
+ */
+
+:root {
+  /* Brand — primary buttons, active stepper segment, links */
+  --color-brand: #00236f;
+  --color-on-brand: #ffffff;
+  --color-brand-soft: #1e3a8a; /* hover / pressed brand surface */
+
+  /* Page and surfaces — from app background up to card backgrounds */
+  --color-page: #faf7f2; /* app background */
+  --color-surface: #ffffff; /* cards, inputs, list rows */
+  --color-surface-muted: #f3efe6; /* nested panels inside a card */
+  --color-surface-sunken: #ebe6dc; /* segmented-control track, chips */
+  --color-surface-raised: #e3ddd2; /* inactive stepper segments */
+
+  /* Text — primary and secondary ink */
+  --color-ink: #1a1b21; /* headings, values, primary labels */
+  --color-ink-muted: #444651; /* helper text, captions, inactive labels */
+
+  /* Borders — subtle default, stronger for emphasis and icons */
+  --color-border: #d5cfc4;
+  --color-border-strong: #757682;
+
+  /* Positive — money totals, completed steps, success pills */
+  --color-positive: #15803d;
+  --color-positive-soft: #dcfce7;
+
+  /* Accent — stage badge (Opening/Closing) and expense amounts */
+  --color-accent: #ac3400;
+  --color-accent-soft: #ffdbd0;
+
+  /* Negative — delete actions and validation warnings */
+  --color-negative: #ba1a1a;
+  --color-negative-soft: #ffdad6;
+
+  /* Typography — stacks only; loading strategy comes later.
+     Until fonts are bundled, browsers fall back to the generic family. */
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+  --font-number: "Source Code Pro", monospace;
+}

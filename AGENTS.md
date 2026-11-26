@@ -103,7 +103,9 @@ Keep steps small. One concept at a time. Prefer depth over speed.
 - **State:** one root state object for `trip`, `rates`, `closing`, `expenses`; pure functions for
   `bundleCalc`, `rateCalc`, `totalSale`, `cashInHand`; `localStorage` as a persistence mirror.
   No Redux. No XState unless the workflow grows.
-- **Styling:** compiled CSS only — **never the Tailwind CDN script** from the Stitch prototypes.
+- **Styling:** compiled Tailwind v3 + CSS custom properties (`--color-*` / `--font-*` tokens in
+  `src/lib/styles/tokens.css`). **Never the Tailwind CDN script** from the Stitch prototypes.
+  Tailwind/PostCSS config is frozen and Dev A-owned; Dev B uses agreed utility classes only.
   Keep fonts minimal (system fonts or self-hosted subsets).
 - **Constraints:** older mobile devices, poor connectivity → small bundles, no heavy dependencies,
   optional hand-written service worker to cache the app shell.
